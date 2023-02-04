@@ -9,6 +9,7 @@ public class ChoiceManager : MonoBehaviour
     public List<Transform> SpawnOptions;
     public int optionCount;
     public List<GameObject> choices;
+    public TransitionManager transitionManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +48,7 @@ public class ChoiceManager : MonoBehaviour
             Destroy(choice);
         }
         choices.Clear();
+        transitionManager.encounterComplete = true;
     }
     public void Cleanup()
     {

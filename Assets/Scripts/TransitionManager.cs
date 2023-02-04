@@ -13,6 +13,7 @@ public class TransitionManager : MonoBehaviour
     public ChoiceManager choiceManager;
     public CombatManager combatManager;
     public bool combatRoom = false;
+    public bool encounterComplete;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +25,18 @@ public class TransitionManager : MonoBehaviour
     {
         
     }
-    public void OnTriggerEnter2D()
+    public void OnTriggerEnter2D(Collider2D col)
     {
-        if(!loading)
-            TransitionToNextLevel();
+        if (col.CompareTag("Player"))
+        {
+            if ((!loading) && encounterComplete)
+                TransitionToNextLevel();
+        }
     }
     void TransitionToNextLevel()
     {
         loading = true;
+        
         StartCoroutine(fade(Color.clear,Color.black));
         StartCoroutine(sceneSetup());
     }
@@ -53,6 +58,7 @@ public class TransitionManager : MonoBehaviour
             combatManager.StartCombatEncounter();
             combatRoom = !combatRoom;
         }
+        encounterComplete = false;
     }
     IEnumerator fade(Color start,Color end)
     {

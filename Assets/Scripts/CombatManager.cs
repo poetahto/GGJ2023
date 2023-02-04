@@ -8,6 +8,15 @@ public class CombatManager : MonoBehaviour
     public GameObject plantPrefab;
     GameObject plantInstance;
     public Transform plantSpawn;
+    public TransitionManager transitionManager;
+    public GameObject plantHunterPrefab;
+    public GameObject playerHunterPrefab;
+    public List<GameObject> enemies;
+    public float waveInterval;
+    public int PlantHuntersPerWave;
+    public int PlayerHuntersPerWave;
+    public List<Transform> enemySpawnPositions;
+    bool spawning = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +42,51 @@ public class CombatManager : MonoBehaviour
     }
     IEnumerator combatDuration()
     {
+        spawning = true;
+        StartCoroutine(SpawnEnemies());
         yield return new WaitForSeconds(duration);
         print("ending combat encounter");
-        
+        transitionManager.encounterComplete = true;
+        StopCoroutine(SpawnEnemies());
+        killAllEnemies();
+        spawning = false;
+    }
+    IEnumerator SpawnEnemies()
+    {
+        while (spawning)
+        {
+            yield return new WaitForSeconds(waveInterval);
+            SpawnWave();
+        }
+    }
+    void SpawnWave()
+    {
+        if (!spawning)
+            return;
+        print("wave");
+        for(int i = 0; i < PlantHuntersPerWave; i++)
+        {
+            SpawnEnemy(playerHunterPrefab);
+        }
+        for (int i = 0; i < PlayerHuntersPerWave; i++)
+        {
+            SpawnEnemy(plantHunterPrefab);
+        }
+    }
+    void SpawnEnemy(GameObject enemyPrefab)
+    {
+        //pick random spawn position and place enemy
+        Vector3 spawnPos = enemySpawnPositions[Random.Range(0, enemySpawnPositions.Count)].position;
+        enemies.Add(Instantiate(enemyPrefab,spawnPos,Quaternion.identity));
+    }
+    void killAllEnemies()
+    {
+        foreach(GameObject enemy in enemies)
+        {   
+            if(enemy!=null)
+                enemy.GetComponent<Health>().Damage(10000);
+        }
+        enemies.Clear();
     }
     public void Cleanup()
     {
