@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class Collectable : MonoBehaviour
 {
     [SerializeField] 
-    private UnityEvent<GameObject> onCollect;
+    public  UnityEvent<GameObject> onCollect;
     
     public void Collect(GameObject collectSource)
     {

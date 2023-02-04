@@ -10,10 +10,11 @@ public class TransitionManager : MonoBehaviour
     public float fadeTime;
     public bool loading = false;
     public Transform player;
+    public ChoiceManager choiceManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(fade(Color.black, Color.clear));
     }
 
     // Update is called once per frame
@@ -38,9 +39,11 @@ public class TransitionManager : MonoBehaviour
         StartCoroutine(fade(Color.black,Color.clear));
         loading = false;
         player.transform.position = SpawnPoint.position;
+        choiceManager.SpawnNewPickups();
     }
     IEnumerator fade(Color start,Color end)
     {
+        ScreenCover.color = start;
         for (float t = 0f; t < fadeTime; t += Time.deltaTime)
         {
             float normalizedTime = t / fadeTime;
