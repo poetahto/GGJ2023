@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7fe8fa855fa421ab53c00825a307524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount: 1
 --- !u!114 &293273501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,6 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bc9c880bd44527a48d639b3c55daa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount: 0
 --- !u!114 &918594318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,7 +960,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
-  maxValue: 5
+  maxHealth: 5
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &1438600045
 Rigidbody2D:
   serializedVersion: 4
@@ -1467,6 +1475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4edcecd70c4ea0812dcd35f3b2004e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount: 0
+  fullHeal: 0
 --- !u!1 &2048636599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,6 +1568,10 @@ PrefabInstance:
       propertyPath: bulletEffects.Array.data[1]
       value: 
       objectReference: {fileID: 293273500}
+    - target: {fileID: 262679652067188506, guid: 572de67d361426946a361ba473e4938f, type: 3}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 262679652067188510, guid: 572de67d361426946a361ba473e4938f, type: 3}
       propertyPath: m_RootOrder
       value: 2

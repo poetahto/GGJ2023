@@ -2,11 +2,14 @@
 
 public class HealthRestore : Effect
 {
+    public float amount;
+    public bool fullHeal;
+    
     public override void ApplyTo(GameObject obj)
     {
         if (obj.TryGetComponent(out Health health))
         {
-            health.value = health.maxValue;
+            health.Heal(fullHeal ? health.MaxHealth : amount);
         }
     }
 

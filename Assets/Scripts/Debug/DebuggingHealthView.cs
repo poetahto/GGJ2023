@@ -8,7 +8,7 @@ namespace DefaultNamespace
 
         public override void UpdateValue(Health value)
         {
-            text.text = $"{value.value}/{value.maxValue}";
+            text.text = $"{value.CurrentHealth}/{value.MaxHealth}";
         }
     }
 }

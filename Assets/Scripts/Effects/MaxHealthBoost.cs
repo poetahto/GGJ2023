@@ -2,11 +2,13 @@
 
 public class MaxHealthBoost : Effect
 {
+    public float amount;
+    
     public override void ApplyTo(GameObject obj)
     {
         if (obj.TryGetComponent(out Health health))
         {
-            health.maxValue += 10;
+            health.MaxHealth += amount;
         }
     }
 
@@ -14,7 +16,7 @@ public class MaxHealthBoost : Effect
     {
         if (obj.TryGetComponent(out Health health))
         {
-            health.maxValue -= 10;
+            health.MaxHealth -= amount;
         }
     }
 }
