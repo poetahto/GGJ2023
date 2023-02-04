@@ -13,10 +13,13 @@ public class CombatManager : MonoBehaviour
     public GameObject playerHunterPrefab;
     public List<GameObject> enemies;
     public float waveInterval;
-    public int PlantHuntersPerWave;
-    public int PlayerHuntersPerWave;
+    [Range(0,1)]
+    public float PlayerHunterRatio;
     public List<Transform> enemySpawnPositions;
+    List<Transform> checkedSpawnPositions;
     bool spawning = false;
+    public float spawnCheckRadius;
+    public LayerMask enemyBlockers;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +28,12 @@ public class CombatManager : MonoBehaviour
             instance = this;
             plantInstance = Instantiate(plantPrefab,transform);
             plantInstance.SetActive(false);
+            checkedSpawnPositions = new List<Transform>();
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
     }
@@ -66,28 +70,42 @@ public class CombatManager : MonoBehaviour
         while (spawning)
         {
             yield return new WaitForSeconds(waveInterval);
-            SpawnWave();
+            SpawnEnemy();
         }
     }
-    void SpawnWave()
+    void SpawnEnemy()
     {
         if (!spawning)
             return;
-        print("wave");
-        for(int i = 0; i < PlantHuntersPerWave; i++)
-        {
-            SpawnEnemy(playerHunterPrefab);
-        }
-        for (int i = 0; i < PlayerHuntersPerWave; i++)
-        {
-            SpawnEnemy(plantHunterPrefab);
-        }
-    }
-    void SpawnEnemy(GameObject enemyPrefab)
-    {
         //pick random spawn position and place enemy
-        Vector3 spawnPos = enemySpawnPositions[Random.Range(0, enemySpawnPositions.Count)].position;
-        enemies.Add(Instantiate(enemyPrefab,spawnPos,Quaternion.identity));
+        Vector3 spawnPos=Vector3.zero;
+        while (enemySpawnPositions.Count != 0)
+        {
+            Transform t=enemySpawnPositions[Random.Range(0, enemySpawnPositions.Count)];
+            Vector3 potentialSpawnPos = t.position;
+            checkedSpawnPositions.Add(t);
+            enemySpawnPositions.Remove(t);
+            if (Physics2D.CircleCast(spawnPos, spawnCheckRadius,Vector2.down,0,enemyBlockers))
+            {
+                ;
+            }
+            else
+            {
+                spawnPos = potentialSpawnPos;
+                break;
+            }
+        }
+        foreach(Transform t in checkedSpawnPositions)
+        {
+            enemySpawnPositions.Add(t);
+        }
+        checkedSpawnPositions.Clear();
+        if (spawnPos == Vector3.zero)
+            return;
+        if(Random.Range(0f,1f)<PlayerHunterRatio)
+            enemies.Add(Instantiate(playerHunterPrefab,spawnPos,Quaternion.identity));
+        else
+            enemies.Add(Instantiate(plantHunterPrefab, spawnPos, Quaternion.identity));
     }
     void killAllEnemies()
     {

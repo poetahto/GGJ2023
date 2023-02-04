@@ -2990,15 +2990,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898a310de2e4af047bf5c7c6077ac992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 2
   plantPrefab: {fileID: 7700216767716136513, guid: bef6f956dbd8632419e69d5709820ce8, type: 3}
   plantSpawn: {fileID: 241435945}
   plantHunterPrefab: {fileID: 7586474010970626345, guid: d4617d576c061d44c8ed7fb23ae7c0d9, type: 3}
   playerHunterPrefab: {fileID: 6081423629110888976, guid: 4635dd2a11254a64fa4e46a338906837, type: 3}
   enemies: []
-  waveInterval: 5
-  PlantHuntersPerWave: 1
-  PlayerHuntersPerWave: 1
+  waveInterval: 1
+  PlayerHunterRatio: 0.5
   enemySpawnPositions:
   - {fileID: 1642412819}
   - {fileID: 1399574545}
@@ -3006,6 +3005,10 @@ MonoBehaviour:
   - {fileID: 467996072}
   - {fileID: 408247587}
   - {fileID: 1833898625}
+  spawnCheckRadius: 1
+  enemyBlockers:
+    serializedVersion: 2
+    m_Bits: 448
 --- !u!4 &1629545944
 Transform:
   m_ObjectHideFlags: 0
