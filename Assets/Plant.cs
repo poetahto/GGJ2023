@@ -15,6 +15,8 @@ public class Plant : MonoBehaviour
 
     public State currentState;
     private float waitTime;
+    private Vector2 startPosition;
+    public float wanderRadius;
 
     public enum State
     {
@@ -26,6 +28,7 @@ public class Plant : MonoBehaviour
     {
         positionTarget = transform.Find("Position Target").transform;
         positionTarget.parent = null;
+        startPosition = transform.position;
 
         waitTime = 1;
         currentState = State.wait;
@@ -40,9 +43,9 @@ public class Plant : MonoBehaviour
                     smoothTime, maxSpeed);
                 AddWiggle();
 
-                if (Vector2.Distance(transform.position, positionTarget.position) < 0.5f)
+                if (Vector2.Distance(transform.position, positionTarget.position) < 0.1f)
                 {
-                    waitTime = Random.Range(0.5f, 5f);
+                    waitTime = Random.Range(5, 15f);
                     currentState = State.wait;
                 }
 
@@ -74,6 +77,12 @@ public class Plant : MonoBehaviour
 
     void NewTargetLocation()
     {
-        positionTarget.position = Random.insideUnitCircle * 2;
+        positionTarget.position = startPosition + (Random.insideUnitCircle * wanderRadius);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(startPosition, wanderRadius);
     }
 }
