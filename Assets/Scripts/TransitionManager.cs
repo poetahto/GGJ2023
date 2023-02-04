@@ -29,35 +29,25 @@ public class TransitionManager : MonoBehaviour
     void TransitionToNextLevel()
     {
         loading = true;
-        StartCoroutine(fadeOut());
+        StartCoroutine(fade(Color.clear,Color.black));
+        StartCoroutine(sceneSetup());
     }
-    IEnumerator fadeOut()
+    IEnumerator sceneSetup()
     {
-        for (float t = 0f; t < fadeTime; t += Time.deltaTime)
-        {
-            float normalizedTime = t / fadeTime;
-            //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
-            ScreenCover.color = Color.Lerp(Color.clear, Color.black, normalizedTime);
-            yield return null;
-        }
-        ScreenCover.color = Color.black;
-        sceneSetup();
-    }
-    void sceneSetup()
-    {
-        StartCoroutine(fadeIn());
+        yield return new WaitForSeconds(fadeTime);
+        StartCoroutine(fade(Color.black,Color.clear));
         loading = false;
         player.transform.position = SpawnPoint.position;
     }
-    IEnumerator fadeIn()
+    IEnumerator fade(Color start,Color end)
     {
         for (float t = 0f; t < fadeTime; t += Time.deltaTime)
         {
             float normalizedTime = t / fadeTime;
             //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
-            ScreenCover.color = Color.Lerp(Color.black, Color.clear, normalizedTime);
+            ScreenCover.color = Color.Lerp(start, end, normalizedTime);
             yield return null;
         }
-        ScreenCover.color = Color.clear;
+        ScreenCover.color = end;
     }
 }
