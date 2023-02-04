@@ -1,10 +1,10 @@
-﻿namespace Application.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.Events;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
 
+namespace Events
+{
     /// <summary>
     /// Handles OnTrigger events, and passes them to C# events.
     /// </summary>
@@ -119,7 +119,7 @@
 
                     if (showDebug)
                     {
-                        Debug.Log($"Rigidbody {currentRigidbody.name} entered the trigger {name}");
+                        UnityEngine.Debug.Log($"Rigidbody {currentRigidbody.name} entered the trigger {name}");
                     }
                 }
             }
@@ -138,7 +138,7 @@
 
                     if (showDebug)
                     {
-                        Debug.Log($"Rigidbody {previousRigidbody.name} exited the trigger {name}");
+                        UnityEngine.Debug.Log($"Rigidbody {previousRigidbody.name} exited the trigger {name}");
                     }
                 }
             }
@@ -157,7 +157,7 @@
 
                     if (showDebug)
                     {
-                        Debug.Log($"Collider {currentCollider.name} entered the trigger {name}");
+                        UnityEngine.Debug.Log($"Collider {currentCollider.name} entered the trigger {name}");
                     }
                 }
             }
@@ -176,7 +176,7 @@
 
                     if (showDebug)
                     {
-                        Debug.Log($"Collider {previousCollider.name} exited the trigger {name}");
+                        UnityEngine.Debug.Log($"Collider {previousCollider.name} exited the trigger {name}");
                     }
                 }
             }

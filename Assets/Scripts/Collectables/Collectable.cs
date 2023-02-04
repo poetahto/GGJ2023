@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class Collectable : MonoBehaviour
+namespace Collectables
 {
-    [SerializeField] 
-    public  UnityEvent<GameObject> onCollect;
-    
-    public void Collect(GameObject collectSource)
+    public class Collectable : MonoBehaviour
     {
-        onCollect.Invoke(collectSource);
+        [SerializeField] 
+        public  UnityEvent<GameObject> onCollect;
+    
+        public void Collect(GameObject collectSource)
+        {
+            onCollect.Invoke(collectSource);
+        }
     }
 }

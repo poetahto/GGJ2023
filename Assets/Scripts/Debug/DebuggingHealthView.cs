@@ -1,6 +1,6 @@
 ﻿using TMPro;
 
-namespace DefaultNamespace
+namespace Debug
 {
     public class DebuggingHealthView : View<Health>
     {

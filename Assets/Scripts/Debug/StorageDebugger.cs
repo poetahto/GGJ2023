@@ -1,3 +1,8 @@
-﻿public class StorageDebugger : ViewDebugger<Storage>
+﻿using Collectables;
+
+namespace Debug
 {
+    public class StorageDebugger : ViewDebugger<Storage>
+    {
+    }
 }

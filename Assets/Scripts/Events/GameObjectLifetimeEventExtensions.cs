@@ -1,8 +1,8 @@
-﻿namespace Application.Core
-{
-    using System;
-    using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+namespace Events
+{
     /// <summary>
     /// Static extension methods for hooking into the GameObject lifetime.
     /// </summary>

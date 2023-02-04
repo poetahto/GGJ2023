@@ -1,4 +1,4 @@
-﻿using Application.Core;
+﻿using Events;
 using UnityEngine;
 
 namespace Effects

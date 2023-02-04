@@ -1,9 +1,9 @@
-﻿namespace Application.Core
-{
-    using System;
-    using JetBrains.Annotations;
-    using UnityEngine;
+﻿using System;
+using JetBrains.Annotations;
+using UnityEngine;
 
+namespace Events
+{
     /// <summary>
     /// Extensions for quickly hooking into trigger events.
     /// </summary>

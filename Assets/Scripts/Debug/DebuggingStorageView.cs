@@ -1,8 +1,9 @@
 ﻿using System.Text;
+using Collectables;
 using TMPro;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Debug
 {
     public class DebuggingStorageView : View<Storage>
     {

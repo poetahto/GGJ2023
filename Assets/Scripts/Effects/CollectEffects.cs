@@ -1,23 +1,26 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectEffects : MonoBehaviour
+namespace Effects
 {
-    public List<Effect> effects;
-
-    public void ApplyAll(GameObject target)
+    public class CollectEffects : MonoBehaviour
     {
-        foreach (var effect in effects)
+        public List<Effect> effects;
+
+        public void ApplyAll(GameObject target)
         {
-            effect.ApplyTo(target);
+            foreach (var effect in effects)
+            {
+                effect.ApplyTo(target);
+            }
         }
-    }
 
-    public void RemoveAll(GameObject target)
-    {
-        foreach (var effect in effects)
+        public void RemoveAll(GameObject target)
         {
-            effect.RemoveFrom(target);
+            foreach (var effect in effects)
+            {
+                effect.RemoveFrom(target);
+            }
         }
     }
 }

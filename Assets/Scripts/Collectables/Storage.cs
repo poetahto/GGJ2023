@@ -2,26 +2,29 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Storage : MonoBehaviour
+namespace Collectables
 {
-    [SerializeField] 
-    private UnityEvent<Storable> onStore;
-    
-    private List<Storable> _storables = new List<Storable>();
-
-    public IEnumerable<Storable> Storable => _storables;
-    
-    public void Store(Collectable collectable)
+    public class Storage : MonoBehaviour
     {
-        if (collectable is Storable storable)
+        [SerializeField] 
+        private UnityEvent<Storable> onStore;
+    
+        private List<Storable> _storables = new List<Storable>();
+
+        public IEnumerable<Storable> Storable => _storables;
+    
+        public void Store(Collectable collectable)
         {
-            Store(storable);
+            if (collectable is Storable storable)
+            {
+                Store(storable);
+            }
         }
-    }
 
-    public void Store(Storable storable)
-    {
-        _storables.Add(storable);
-        onStore.Invoke(storable);
+        public void Store(Storable storable)
+        {
+            _storables.Add(storable);
+            onStore.Invoke(storable);
+        }
     }
 }

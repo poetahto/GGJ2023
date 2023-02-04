@@ -1,3 +1,6 @@
-﻿public class HealthDebugger : ViewDebugger<Health>
+﻿namespace Debug
 {
+    public class HealthDebugger : ViewDebugger<Health>
+    {
+    }
 }

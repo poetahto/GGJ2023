@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class Storable : Collectable
+namespace Collectables
 {
-    [SerializeField] 
-    private UnityEvent<GameObject> onDrop;
-    
-    public void Drop(GameObject dropSource)
+    public class Storable : Collectable
     {
-        onDrop.Invoke(dropSource);
+        [SerializeField] 
+        private UnityEvent<GameObject> onDrop;
+    
+        public void Drop(GameObject dropSource)
+        {
+            onDrop.Invoke(dropSource);
+        }
     }
 }

@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 
-public class MaxHealthBoost : Effect
+namespace Effects
 {
-    public float amount;
+    public class MaxHealthBoost : Effect
+    {
+        public float amount;
     
-    public override void ApplyTo(GameObject obj)
-    {
-        if (obj.TryGetComponent(out Health health))
+        public override void ApplyTo(GameObject obj)
         {
-            health.MaxHealth += amount;
+            if (obj.TryGetComponent(out Health health))
+            {
+                health.MaxHealth += amount;
+            }
         }
-    }
 
-    public override void RemoveFrom(GameObject obj)
-    {
-        if (obj.TryGetComponent(out Health health))
+        public override void RemoveFrom(GameObject obj)
         {
-            health.MaxHealth -= amount;
+            if (obj.TryGetComponent(out Health health))
+            {
+                health.MaxHealth -= amount;
+            }
         }
     }
 }
