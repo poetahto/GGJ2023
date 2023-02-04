@@ -9,13 +9,13 @@ namespace Application.Core
         public float attackRange = 8;
         
         private Transform _target;
-        private Rigidbody2D _rigidbody;
+        private Rigidbody _rigidbody;
         private BulletSpawner _spawner;
         
         private void Awake()
         {
             _target = FindAnyObjectByType<PlayerMovement>().transform;
-            _rigidbody = GetComponent<Rigidbody2D>();
+            _rigidbody = GetComponent<Rigidbody>();
             _spawner = GetComponent<BulletSpawner>();
         }
 

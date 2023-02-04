@@ -7,7 +7,7 @@ namespace Effects
     {
         public override void ApplyTo(GameObject obj)
         {
-            if (obj.TryGetComponent(out Collider2D col))
+            if (obj.TryGetComponent(out Collider col))
             {
                 var triggerEvents = col.GetTriggerEvents();
                 triggerEvents.ColliderTriggerEnter += o => HandleCollisionEnter(o, obj);
@@ -19,7 +19,7 @@ namespace Effects
         {
         }
         
-        public virtual void HandleCollisionEnter(Collider2D col, GameObject source) {}
-        public virtual void HandleCollisionExit(Collider2D col, GameObject source) {}
+        public virtual void HandleCollisionEnter(Collider col, GameObject source) {}
+        public virtual void HandleCollisionExit(Collider col, GameObject source) {}
     }
 }

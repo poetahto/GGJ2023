@@ -10,12 +10,12 @@ public class PlantHunterLogic : MonoBehaviour
     public float selfDestructRange;
     
     private Plant _target;
-    private Rigidbody2D _rigidbody;
+    private Rigidbody _rigidbody;
     
     private void Awake()
     {
         _target = FindAnyObjectByType<Plant>();
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()

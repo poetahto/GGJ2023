@@ -9,7 +9,7 @@ public class CollectableGrabber : MonoBehaviour
     [SerializeField] 
     private GameObject source;
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter(Collider col)
     {
         if (col.TryGetComponent(out Collectable collectable))
         {

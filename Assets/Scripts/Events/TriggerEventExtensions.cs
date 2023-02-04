@@ -14,7 +14,7 @@
         /// </summary>
         /// <param name="collider">The collider to listen to.</param>
         /// <returns>The TriggerEvents attached to the collider.</returns>
-        public static TriggerEvents GetTriggerEvents([NotNull] this Collider2D collider)
+        public static TriggerEvents GetTriggerEvents([NotNull] this Collider collider)
         {
             if (collider == null)
             {

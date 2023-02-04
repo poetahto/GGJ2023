@@ -6,7 +6,7 @@ namespace Effects
     {
         public float amount;
         
-        public override void HandleCollisionEnter(Collider2D col, GameObject source)
+        public override void HandleCollisionEnter(Collider col, GameObject source)
         {
             if (col.TryGetComponent(out Health health))
             {

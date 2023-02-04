@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [Serializable]
@@ -16,12 +16,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float decelerationAmount = 5;
     [SerializeField] private MovementSettings groundedMovement;
 
-    private Rigidbody2D _rigidbody;
+    private Rigidbody _rigidbody;
     private bool _hasGroundChecker;
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -49,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move(MovementSettings settings)
     {
-        Vector2 inputDirection = GetInputDirection();
-        Vector2 currentVelocity = _rigidbody.velocity;
+        Vector3 inputDirection = GetInputDirection();
+        Vector3 currentVelocity = _rigidbody.velocity;
 
         var targetVelocity = inputDirection.normalized * settings.speed;
         
@@ -60,30 +60,30 @@ public class PlayerMovement : MonoBehaviour
             (int) Mathf.Sign(targetVelocity.x) != (int) Mathf.Sign(currentVelocity.x);
         
         bool didReverseY = 
-            targetVelocity.y != 0 && 
-            currentVelocity.y != 0 &&
-            (int) Mathf.Sign(targetVelocity.y) != (int) Mathf.Sign(currentVelocity.y);
+            targetVelocity.z != 0 && 
+            currentVelocity.z != 0 &&
+            (int) Mathf.Sign(targetVelocity.z) != (int) Mathf.Sign(currentVelocity.z);
         
-        float acceleration = inputDirection != Vector2.zero 
+        float acceleration = inputDirection != Vector3.zero 
             ? settings.acceleration 
             : settings.deceleration;
 
-        if (inputDirection != Vector2.zero)
+        if (inputDirection != Vector3.zero)
         {
             var t1 = (int) Mathf.Sign(targetVelocity.x) == (int) Mathf.Sign(currentVelocity.x) && currentVelocity.magnitude > targetVelocity.magnitude;
-            var t2 = (int) Mathf.Sign(targetVelocity.y) == (int) Mathf.Sign(currentVelocity.y) && currentVelocity.magnitude > targetVelocity.magnitude;
+            var t2 = (int) Mathf.Sign(targetVelocity.z) == (int) Mathf.Sign(currentVelocity.z) && currentVelocity.magnitude > targetVelocity.magnitude;
             if (t1 || t2)
                 return;
             
             // is accelerating
             float reverseMultiplier = didReverseX || didReverseY ? settings.reverseMultiplier : 1;
             float maxDelta = acceleration * reverseMultiplier * Time.deltaTime;
-            _rigidbody.velocity = Vector2.MoveTowards(currentVelocity, targetVelocity, maxDelta);
+            _rigidbody.velocity = Vector3.MoveTowards(currentVelocity, targetVelocity, maxDelta);
         }
         else
         {
             // is decelerating
-            _rigidbody.velocity = Vector2.Lerp(_rigidbody.velocity, Vector2.zero, decelerationAmount * Time.deltaTime);
+            _rigidbody.velocity = Vector3.Lerp(_rigidbody.velocity, Vector3.zero, decelerationAmount * Time.deltaTime);
         }
     }
 }

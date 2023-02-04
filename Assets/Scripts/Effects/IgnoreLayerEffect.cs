@@ -9,7 +9,7 @@ namespace Effects
         
         public override void ApplyTo(GameObject obj)
         {
-            if (obj.TryGetComponent(out Collider2D col))
+            if (obj.TryGetComponent(out Collider col))
             {
                 var te = col.GetTriggerEvents();
                 te.ExcludeLayers = mask;

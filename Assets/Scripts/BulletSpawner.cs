@@ -31,7 +31,7 @@ public class BulletSpawner : MonoBehaviour
             instance.transform.position = transform.position;
             _cooldownTime = 1 / fireRate;
 
-            if (instance.TryGetComponent(out Rigidbody2D rb))
+            if (instance.TryGetComponent(out Rigidbody rb))
             {
                 float randomSpreadAngle = Random.Range(-spread, spread);
                 Quaternion randomRotation = Quaternion.Euler(0, 0, randomSpreadAngle);

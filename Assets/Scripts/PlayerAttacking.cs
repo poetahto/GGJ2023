@@ -13,7 +13,7 @@ namespace Application.Core
         {
             var playerPos = transform.position;
             var cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            cursorPos.z = 0;
+            cursorPos.y = 0;
             var result = (cursorPos - playerPos).normalized;
             return result;
         }

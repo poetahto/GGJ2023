@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Plant : MonoBehaviour
 {
     private Transform positionTarget;
-    Vector2 velocity = Vector2.zero;
+    Vector3 velocity = Vector3.zero;
     public float maxSpeed = 1;
     public float smoothTime = 0.1f;
     public float wiggleFrequency;
@@ -15,7 +15,7 @@ public class Plant : MonoBehaviour
 
     public State currentState;
     private float waitTime;
-    private Vector2 startPosition;
+    private Vector3 startPosition;
     public float wanderRadius;
 
     public enum State
@@ -39,11 +39,11 @@ public class Plant : MonoBehaviour
         switch (currentState)
         {
             case State.moveToTarget:
-                transform.position = Vector2.SmoothDamp(transform.position, positionTarget.position, ref velocity,
+                transform.position = Vector3.SmoothDamp(transform.position, positionTarget.position, ref velocity,
                     smoothTime, maxSpeed);
                 AddWiggle();
 
-                if (Vector2.Distance(transform.position, positionTarget.position) < 0.1f)
+                if (Vector3.Distance(transform.position, positionTarget.position) < 0.1f)
                 {
                     waitTime = Random.Range(5, 15f);
                     currentState = State.wait;
@@ -77,7 +77,7 @@ public class Plant : MonoBehaviour
 
     void NewTargetLocation()
     {
-        positionTarget.position = startPosition + (Random.insideUnitCircle * wanderRadius);
+        positionTarget.position = startPosition + ((Vector3) Random.insideUnitCircle * wanderRadius);
     }
 
     private void OnDrawGizmosSelected()
