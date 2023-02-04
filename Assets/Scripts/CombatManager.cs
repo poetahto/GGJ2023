@@ -118,6 +118,7 @@ public class CombatManager : MonoBehaviour
     }
     public void Cleanup()
     {
+        if(plantInstance)
         plantInstance.SetActive(false);
     }
 }
