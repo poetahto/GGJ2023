@@ -17,8 +17,9 @@ public class Health : MonoBehaviour
 
     public void Heal(float amount)
     {
-        value += amount;
-        onHeal.Invoke(amount);
+        var healthChange = Mathf.Min(value + amount, maxHealth) - value;
+        value += healthChange;
+        onHeal.Invoke(healthChange);
     }
 
     public float CurrentHealth => value;
