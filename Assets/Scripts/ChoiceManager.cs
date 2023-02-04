@@ -20,7 +20,7 @@ public class ChoiceManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
     }
@@ -40,6 +40,7 @@ public class ChoiceManager : MonoBehaviour
             PickupOptions.Remove(randomlySelectedPickupPrefab);
             GameObject pickupInstance = Instantiate(randomlySelectedPickupPrefab, SpawnOptions[i].position,Quaternion.identity);
             choices.Add(pickupInstance);
+            print(pickupInstance.name);
             pickupInstance.GetComponent<Collectable>().onCollect.AddListener(ConcludeChoice);
         }
        foreach(GameObject g in selectedOptions)
@@ -58,9 +59,5 @@ public class ChoiceManager : MonoBehaviour
         }
         choices.Clear();
         TransitionManager.instance.encounterComplete = true;
-    }
-    public void Cleanup()
-    {
-        ConcludeChoice(null);
     }
 }

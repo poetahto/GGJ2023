@@ -28,7 +28,7 @@ public class TransitionManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         
     }
@@ -73,7 +73,6 @@ public class TransitionManager : MonoBehaviour
         }
         else
         {
-            ChoiceManager.instance.Cleanup();
             CombatManager.instance.StartCombatEncounter();
             combatRoom = !combatRoom;
         }

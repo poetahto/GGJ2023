@@ -2990,7 +2990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898a310de2e4af047bf5c7c6077ac992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 2
   plantPrefab: {fileID: 7700216767716136513, guid: bef6f956dbd8632419e69d5709820ce8, type: 3}
   plantSpawn: {fileID: 241435945}
   plantHunterPrefab: {fileID: 7586474010970626345, guid: d4617d576c061d44c8ed7fb23ae7c0d9, type: 3}

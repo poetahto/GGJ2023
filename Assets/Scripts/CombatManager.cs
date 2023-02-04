@@ -33,7 +33,7 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
     }

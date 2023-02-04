@@ -560,8 +560,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: W:/C#/GGJ2023/FMOD/GGJ2023.fspro
-  sourceBankPath: W:/C#/GGJ2023/FMOD/Build
+  sourceProjectPath: FMOD/GGJ2023.fspro
+  sourceBankPath: FMOD/Build
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
