@@ -11,7 +11,7 @@ public class CombatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        plantInstance = plantPrefab;
+        plantInstance = Instantiate(plantPrefab);
         plantInstance.SetActive(false);
     }
 
@@ -24,6 +24,7 @@ public class CombatManager : MonoBehaviour
     {
         print("started combat encounter");
         resetPlant();
+        StartCoroutine(combatDuration());
     }
     void resetPlant()
     {

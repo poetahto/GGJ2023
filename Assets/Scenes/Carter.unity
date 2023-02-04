@@ -2891,7 +2891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 3
-  plantPrefab: {fileID: 3866457029439857041, guid: 6858c5f52a4bd964686c81487931d4aa, type: 3}
+  plantPrefab: {fileID: 7700216767716136513, guid: bef6f956dbd8632419e69d5709820ce8, type: 3}
   plantSpawn: {fileID: 241435945}
 --- !u!4 &1629545944
 Transform:

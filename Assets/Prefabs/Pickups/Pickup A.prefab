@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3866457029439857045
 Transform:
   m_ObjectHideFlags: 0
@@ -204,4 +204,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bc9c880bd44527a48d639b3c55daa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  applyToSelfOnAwake: 0
   amount: 0
