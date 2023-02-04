@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class TransitionManager : MonoBehaviour
 {
     public static TransitionManager instance;
-    public Transform SpawnPoint;
+    public Transform PlayerSpawnPoint;
     public Image ScreenCover;
     public float fadeTime;
     public bool loading = false;
-    public Transform player;
+    public GameObject player;
     public bool combatRoom = false;
     public bool encounterComplete;
     // Start is called before the first frame update
@@ -19,6 +19,9 @@ public class TransitionManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            player = Instantiate(player);
+            player.transform.position=PlayerSpawnPoint.position;
+            DontDestroyOnLoad(player);
             StartCoroutine(fade(Color.black, Color.clear));
             StartNextEncounter();
             DontDestroyOnLoad(gameObject);
@@ -61,7 +64,7 @@ public class TransitionManager : MonoBehaviour
     void StartNextEncounter()
     {
         loading = false;
-        player.transform.position = SpawnPoint.position;
+        player.transform.position = PlayerSpawnPoint.position;
         if (!combatRoom)
         {
             CombatManager.instance.Cleanup();
