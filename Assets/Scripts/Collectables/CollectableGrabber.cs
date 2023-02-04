@@ -1,0 +1,20 @@
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+public class CollectableGrabber : MonoBehaviour
+{
+    [SerializeField] 
+    private UnityEvent<Collectable> onCollect;
+
+    [SerializeField] 
+    private GameObject source;
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.TryGetComponent(out Collectable collectable))
+        {
+            collectable.Collect(source);
+            onCollect.Invoke(collectable);
+        }
+    }
+}
