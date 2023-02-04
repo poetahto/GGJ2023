@@ -7,13 +7,7 @@ namespace Application.Core
     {
         [SerializeField] private GameObject aimIndicator;
         [SerializeField] private float indicatorMult = 0.25f;
-        
-        private BulletSpawner _spawner;
-
-        private void Awake()
-        {
-            _spawner = GetComponent<BulletSpawner>();
-        }
+        [SerializeField] private BulletSpawner spawner;
         
         private Vector2 GetFiringDirection()
         {
@@ -26,10 +20,10 @@ namespace Application.Core
 
         private void Update()
         {
-            _spawner.FiringDirection = GetFiringDirection();
-            _spawner.IsFiring = Input.GetKey(KeyCode.Mouse0);
+            spawner.FiringDirection = GetFiringDirection();
+            spawner.IsFiring = Input.GetKey(KeyCode.Mouse0);
             
-            aimIndicator.transform.position = transform.position + (Vector3) _spawner.FiringDirection * indicatorMult;
+            aimIndicator.transform.position = transform.position + (Vector3) spawner.FiringDirection * indicatorMult;
             
             
         }

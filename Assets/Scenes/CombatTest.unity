@@ -206,7 +206,7 @@ MonoBehaviour:
   - {fileID: 89800066}
   - {fileID: 89800065}
   bulletSpeed: 2
-  fireRate: 2
+  fireRate: 0.5
   spread: 10
 --- !u!114 &89800069
 MonoBehaviour:
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 5
-  firingSpeed: 0.5
+  firingSpeed: 1
   attackRange: 7
 --- !u!114 &89800070
 MonoBehaviour:
@@ -235,8 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -349,7 +349,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128807905
 GameObject:
@@ -438,7 +438,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathDamage: 1
-  chaseSpeed: 2
+  chaseSpeed: 1
   selfDestructRange: 1.5
 --- !u!114 &233285205
 MonoBehaviour:
@@ -512,8 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -626,7 +626,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &283457794
 GameObject:
@@ -638,6 +638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 283457796}
   - component: {fileID: 283457795}
+  - component: {fileID: 283457797}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
@@ -712,65 +713,32 @@ Transform:
   m_Father: {fileID: 1890556085}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &293273490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 262679652067188511, guid: 572de67d361426946a361ba473e4938f, type: 3}
-  m_PrefabInstance: {fileID: 262679651783729293}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &293273500
-MonoBehaviour:
+--- !u!61 &283457797
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293273490}
+  m_GameObject: {fileID: 283457794}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7fe8fa855fa421ab53c00825a307524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 1
---- !u!114 &293273501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293273490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20cabc7c1fd4b359d2de6d0c369a478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &293273502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293273490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b486a1dfb34e0592c6e4193ac5d12a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aimIndicator: {fileID: 562348866}
-  indicatorMult: 0.25
---- !u!114 &293273503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293273490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e37b99e2ea747c1bba678e71620a1de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 320
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &332232253
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +780,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathDamage: 1
-  chaseSpeed: 2
+  chaseSpeed: 1
   selfDestructRange: 1.5
 --- !u!114 &332232255
 MonoBehaviour:
@@ -886,8 +854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -1000,7 +968,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525527533
 GameObject:
@@ -1012,6 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 525527535}
   - component: {fileID: 525527534}
+  - component: {fileID: 525527536}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -1086,90 +1055,32 @@ Transform:
   m_Father: {fileID: 1890556085}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &562348866
-GameObject:
+--- !u!61 &525527536
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 562348868}
-  - component: {fileID: 562348867}
-  m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &562348867
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562348866}
+  m_GameObject: {fileID: 525527533}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &562348868
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562348866}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_EdgeRadius: 0
 --- !u!1 &571720956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,7 +1164,7 @@ MonoBehaviour:
   - {fileID: 571720958}
   - {fileID: 571720957}
   bulletSpeed: 2
-  fireRate: 2
+  fireRate: 0.5
   spread: 10
 --- !u!114 &571720961
 MonoBehaviour:
@@ -1268,7 +1179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 5
-  firingSpeed: 0.5
+  firingSpeed: 1
   attackRange: 7
 --- !u!114 &571720962
 MonoBehaviour:
@@ -1282,8 +1193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -1396,7 +1307,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &735335479
 GameObject:
@@ -1439,7 +1350,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathDamage: 1
-  chaseSpeed: 2
+  chaseSpeed: 1
   selfDestructRange: 1.5
 --- !u!114 &735335481
 MonoBehaviour:
@@ -1513,8 +1424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -1627,7 +1538,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &767349062
 GameObject:
@@ -1830,7 +1741,7 @@ MonoBehaviour:
   - {fileID: 784144571}
   - {fileID: 784144570}
   bulletSpeed: 2
-  fireRate: 2
+  fireRate: 0.5
   spread: 10
 --- !u!114 &784144574
 MonoBehaviour:
@@ -1845,7 +1756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 5
-  firingSpeed: 0.5
+  firingSpeed: 1
   attackRange: 7
 --- !u!114 &784144575
 MonoBehaviour:
@@ -1859,8 +1770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -1973,7 +1884,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918594312
 GameObject:
@@ -2221,7 +2132,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathDamage: 1
-  chaseSpeed: 2
+  chaseSpeed: 1
   selfDestructRange: 1.5
 --- !u!114 &1105276946
 MonoBehaviour:
@@ -2295,8 +2206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -2409,7 +2320,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369224572
 GameObject:
@@ -2605,7 +2516,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathDamage: 1
-  chaseSpeed: 2
+  chaseSpeed: 1
   selfDestructRange: 1.5
 --- !u!114 &1397797872
 MonoBehaviour:
@@ -2679,8 +2590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -2793,7 +2704,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438600043
 GameObject:
@@ -2832,8 +2743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -2946,7 +2857,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1438600049
 MonoBehaviour:
@@ -2961,7 +2872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 5
-  firingSpeed: 0.5
+  firingSpeed: 1
   attackRange: 7
 --- !u!114 &1438600050
 MonoBehaviour:
@@ -2981,7 +2892,7 @@ MonoBehaviour:
   - {fileID: 1438600051}
   - {fileID: 1438600053}
   bulletSpeed: 2
-  fireRate: 2
+  fireRate: 0.5
   spread: 10
 --- !u!114 &1438600051
 MonoBehaviour:
@@ -3033,6 +2944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1500837113}
   - component: {fileID: 1500837112}
+  - component: {fileID: 1500837114}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -3107,6 +3019,32 @@ Transform:
   m_Father: {fileID: 1890556085}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1500837114
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500837111}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1760454792
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,7 +3086,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathDamage: 1
-  chaseSpeed: 2
+  chaseSpeed: 1
   selfDestructRange: 1.5
 --- !u!114 &1760454794
 MonoBehaviour:
@@ -3222,8 +3160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -3336,7 +3274,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1793279419
 GameObject:
@@ -3348,6 +3286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1793279421}
   - component: {fileID: 1793279420}
+  - component: {fileID: 1793279422}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -3422,6 +3361,32 @@ Transform:
   m_Father: {fileID: 1890556085}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1793279422
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793279419}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1890556084
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,7 +3555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1892174092
 MonoBehaviour:
@@ -3632,6 +3597,7 @@ MonoBehaviour:
   smoothTime: 0.1
   wiggleFrequency: 0
   wiggleAmplitude: 0
+  currentState: 0
 --- !u!1 &1928309433
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,7 +3884,7 @@ MonoBehaviour:
   - {fileID: 1946805899}
   - {fileID: 1946805898}
   bulletSpeed: 2
-  fireRate: 2
+  fireRate: 0.5
   spread: 10
 --- !u!114 &1946805902
 MonoBehaviour:
@@ -3933,7 +3899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 5
-  firingSpeed: 0.5
+  firingSpeed: 1
   attackRange: 7
 --- !u!114 &1946805903
 MonoBehaviour:
@@ -3947,8 +3913,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2e388efd0c4b30ad9c9a927a0c1e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
-  maxHealth: 2
+  value: 1
+  maxHealth: 1
   destroyOnDeath: 1
   onDeath:
     m_PersistentCalls:
@@ -4061,7 +4027,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2048636599
 GameObject:
@@ -4138,42 +4104,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 293273499, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: spread
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 293273499, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: bulletSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 293273499, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: aimIndicator
-      value: 
-      objectReference: {fileID: 562348866}
-    - target: {fileID: 293273499, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: bulletEffects.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 293273499, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: bulletEffects.Array.data[0]
-      value: 
-      objectReference: {fileID: 293273501}
-    - target: {fileID: 293273499, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: bulletEffects.Array.data[1]
-      value: 
-      objectReference: {fileID: 293273500}
-    - target: {fileID: 293273499, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: bulletEffects.Array.data[2]
-      value: 
-      objectReference: {fileID: 293273503}
-    - target: {fileID: 262679652067188506, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: value
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 262679652067188506, guid: 572de67d361426946a361ba473e4938f, type: 3}
-      propertyPath: maxHealth
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 262679652067188510, guid: 572de67d361426946a361ba473e4938f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4222,6 +4152,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 293273498, guid: 572de67d361426946a361ba473e4938f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 572de67d361426946a361ba473e4938f, type: 3}
