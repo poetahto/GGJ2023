@@ -128,6 +128,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 262679652067188510, guid: 572de67d361426946a361ba473e4938f, type: 3}
   m_PrefabInstance: {fileID: 925490647}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &241435944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 241435945}
+  m_Layer: 0
+  m_Name: PlantSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &241435945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241435944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6, y: -0.34, z: 0.49815178}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496938003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,6 +2861,53 @@ Transform:
   m_Father: {fileID: 1119676706}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1629545942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629545944}
+  - component: {fileID: 1629545943}
+  m_Layer: 0
+  m_Name: CombatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1629545943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629545942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898a310de2e4af047bf5c7c6077ac992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
+  plantPrefab: {fileID: 7700216767716136513, guid: bef6f956dbd8632419e69d5709820ce8, type: 3}
+  plantSpawn: {fileID: 241435945}
+--- !u!4 &1629545944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629545942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.0169442, y: 0.55261266, z: 0.49815178}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727696549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,6 +3017,8 @@ MonoBehaviour:
   loading: 0
   player: {fileID: 178722428}
   choiceManager: {fileID: 944496440}
+  combatManager: {fileID: 1629545943}
+  combatRoom: 1
 --- !u!212 &2050918511
 SpriteRenderer:
   m_ObjectHideFlags: 0
