@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 262679650073660368}
   - component: {fileID: 262679650073660371}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 262679650591775126}
   - component: {fileID: 262679650591775121}
   - component: {fileID: 262679650591775120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collection Grabber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,8 @@ GameObject:
   - component: {fileID: 262679652067188506}
   - component: {fileID: 262679652067188501}
   - component: {fileID: 262679652067188500}
-  m_Layer: 0
+  - component: {fileID: 293273499}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +200,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262679652067188511}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -229,7 +230,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &262679652067188504
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -303,3 +304,21 @@ MonoBehaviour:
     acceleration: 50
     deceleration: 5
     reverseMultiplier: 1
+--- !u!114 &293273499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262679652067188511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0079c4ff89af4f15b71192d364688a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 10
+  bulletPrefab: {fileID: 2933172759479166959, guid: 6ce259f1a05b76a408ee52ed43ec71a9, type: 3}
+  bulletSpeed: 5
+  aimIndicator: {fileID: 0}
+  indicatorMult: 0.5
+  bulletEffects: []

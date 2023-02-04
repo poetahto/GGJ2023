@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         Move(groundedMovement);
     }
 
-    private static Vector2 GetInputDirection()
+    private Vector2 GetInputDirection()
     {
         return new Vector2(
             // Input.GetAxisRaw("Horizontal"),
