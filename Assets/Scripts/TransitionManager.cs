@@ -11,6 +11,8 @@ public class TransitionManager : MonoBehaviour
     public bool loading = false;
     public Transform player;
     public ChoiceManager choiceManager;
+    public CombatManager combatManager;
+    public bool combatRoom = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,18 @@ public class TransitionManager : MonoBehaviour
         StartCoroutine(fade(Color.black,Color.clear));
         loading = false;
         player.transform.position = SpawnPoint.position;
-        choiceManager.SpawnNewPickups();
+        if (!combatRoom)
+        {
+            combatManager.Cleanup();
+            choiceManager.SpawnNewPickups();
+            combatRoom = !combatRoom;
+        }
+        else
+        {
+            choiceManager.Cleanup();
+            combatManager.StartCombatEncounter();
+            combatRoom = !combatRoom;
+        }
     }
     IEnumerator fade(Color start,Color end)
     {

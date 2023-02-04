@@ -42,8 +42,14 @@ public class ChoiceManager : MonoBehaviour
     {
         foreach(GameObject choice in choices)
         {
-            if(g!=choice)
+            choice.GetComponent<Collectable>().onCollect.RemoveListener(ConcludeChoice);
+            if (g!=choice)
             Destroy(choice);
         }
+        choices.Clear();
+    }
+    public void Cleanup()
+    {
+        ConcludeChoice(null);
     }
 }
