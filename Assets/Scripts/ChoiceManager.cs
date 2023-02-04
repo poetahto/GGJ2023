@@ -39,6 +39,7 @@ public class ChoiceManager : MonoBehaviour
             selectedOptions.Add(randomlySelectedPickupPrefab);
             PickupOptions.Remove(randomlySelectedPickupPrefab);
             GameObject pickupInstance = Instantiate(randomlySelectedPickupPrefab, SpawnOptions[i].position,Quaternion.identity);
+            DontDestroyOnLoad(pickupInstance);
             choices.Add(pickupInstance);
             print(pickupInstance.name);
             pickupInstance.GetComponent<Collectable>().onCollect.AddListener(ConcludeChoice);
@@ -51,6 +52,7 @@ public class ChoiceManager : MonoBehaviour
     }
     void ConcludeChoice(GameObject g)
     {
+        print("concluding choice");
         foreach(GameObject choice in choices)
         {
             choice.GetComponent<Collectable>().onCollect.RemoveListener(ConcludeChoice);
