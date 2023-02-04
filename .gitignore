@@ -102,3 +102,8 @@ fmod_editor.log
 # FMOD 1.10.x (Legacy)
 /Assets/FMODAssets/*
 /Assets/FMODStudioCache.meta
+
+# FMOD Temp Data
+/FMOD/.cache/
+/FMOD/.unsaved/
+/FMOD/.user/
