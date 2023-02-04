@@ -52,7 +52,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 inputDirection = GetInputDirection();
         Vector3 currentVelocity = _rigidbody.velocity;
 
-        var targetVelocity = inputDirection.normalized * settings.speed;
+        var dir = inputDirection.normalized;
+        var targetVelocity = new Vector3(dir.x, 0, dir.y) * settings.speed;
         
         bool didReverseX = 
             targetVelocity.x != 0 && 

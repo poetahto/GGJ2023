@@ -24,9 +24,13 @@ public class PlantHunterLogic : MonoBehaviour
         var dirToTarget = distToTarget.normalized;
         _rigidbody.velocity = dirToTarget * chaseSpeed;
 
-        if (distToTarget.sqrMagnitude < selfDestructRange * selfDestructRange && _target.TryGetComponent(out Health health))
+        if (distToTarget.sqrMagnitude < selfDestructRange * selfDestructRange)
         {
-            health.Damage(deathDamage);
+            if (_target.TryGetComponent(out Health health))
+            {
+                health.Damage(deathDamage);
+            }
+            
             onDestruct.Invoke();
             Destroy(gameObject);
         }

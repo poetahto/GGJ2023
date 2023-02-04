@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BulletSpawner : MonoBehaviour
 {
     // todo: all of these need to be able to change for powerup reasons
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject intialEffects;
 
     public List<Effect> bulletEffects;
     public float bulletSpeed;
@@ -13,8 +16,16 @@ public class BulletSpawner : MonoBehaviour
 
     private float _cooldownTime;
     
-    public Vector2 FiringDirection { get; set; }
+    public Vector3 FiringDirection { get; set; }
     public bool IsFiring { get; set; }
+
+    private void Awake()
+    {
+        foreach (var effect in intialEffects.GetComponents<Effect>())
+        {
+            bulletEffects.Add(effect);
+        }
+    }
 
     private void Update()
     {
@@ -34,7 +45,7 @@ public class BulletSpawner : MonoBehaviour
             if (instance.TryGetComponent(out Rigidbody rb))
             {
                 float randomSpreadAngle = Random.Range(-spread, spread);
-                Quaternion randomRotation = Quaternion.Euler(0, 0, randomSpreadAngle);
+                Quaternion randomRotation = Quaternion.Euler(0, randomSpreadAngle, 0);
                 rb.velocity = (randomRotation * FiringDirection) * bulletSpeed;
             }
         }

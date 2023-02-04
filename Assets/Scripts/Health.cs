@@ -3,8 +3,8 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float value;
-    [SerializeField] private float maxHealth;
+    [SerializeField] private float value = 1;
+    [SerializeField] private float maxHealth = 1;
     [SerializeField] private bool destroyOnDeath;
 
     public UnityEvent onDeath;

@@ -9,10 +9,13 @@ namespace Application.Core
         [SerializeField] private float indicatorMult = 0.25f;
         [SerializeField] private BulletSpawner spawner;
         
-        private Vector2 GetFiringDirection()
+        private Vector3 GetFiringDirection()
         {
             var playerPos = transform.position;
-            var cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            playerPos.y = 0;
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(ray, out RaycastHit info);
+            var cursorPos = info.point;
             cursorPos.y = 0;
             var result = (cursorPos - playerPos).normalized;
             return result;
@@ -23,7 +26,7 @@ namespace Application.Core
             spawner.FiringDirection = GetFiringDirection();
             spawner.IsFiring = Input.GetKey(KeyCode.Mouse0);
             
-            aimIndicator.transform.position = transform.position + (Vector3) spawner.FiringDirection * indicatorMult;
+            aimIndicator.transform.position = transform.position + spawner.FiringDirection * indicatorMult;
             
             
         }
