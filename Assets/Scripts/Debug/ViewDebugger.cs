@@ -18,19 +18,23 @@ public abstract class ViewDebugger<T> : MonoBehaviour where T : Component
 
     private void Update()
     {
+        foreach (var usedHealthView in _usedHealthViews)
+        {
+            usedHealthView.gameObject.SetActive(false);
+            _healthViewPool.Release(usedHealthView);
+        }
+        
         _usedHealthViews.Clear();
         
         foreach (var health in FindObjectsByType<T>(FindObjectsSortMode.None))
         {
             var healthView = _healthViewPool.Get();
+            healthView.gameObject.SetActive(true);
             healthView.UpdateValue(health);
             healthView.transform.position = health.transform.position + offset;
             _usedHealthViews.Push(healthView);
         }
 
-        foreach (var usedHealthView in _usedHealthViews)
-        {
-            _healthViewPool.Release(usedHealthView);
-        }
+        
     }
 }
