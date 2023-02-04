@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Application.Core;
 using UnityEngine;
 
 public class BulletSpawner : MonoBehaviour
@@ -10,6 +9,7 @@ public class BulletSpawner : MonoBehaviour
     public List<Effect> bulletEffects;
     public float bulletSpeed;
     public float fireRate;
+    public float spread = 10f;
 
     private float _cooldownTime;
     
@@ -33,7 +33,9 @@ public class BulletSpawner : MonoBehaviour
 
             if (instance.TryGetComponent(out Rigidbody2D rb))
             {
-                rb.velocity = FiringDirection * bulletSpeed;
+                float randomSpreadAngle = Random.Range(-spread, spread);
+                Quaternion randomRotation = Quaternion.Euler(0, 0, randomSpreadAngle);
+                rb.velocity = (randomRotation * FiringDirection) * bulletSpeed;
             }
         }
         else _cooldownTime -= Time.deltaTime;

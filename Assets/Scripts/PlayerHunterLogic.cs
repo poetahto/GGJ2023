@@ -6,7 +6,7 @@ namespace Application.Core
     {
         public float chaseSpeed = 1;
         public float firingSpeed = 0.5f;
-        public float attackRange;
+        public float attackRange = 8;
         
         private Transform _target;
         private Rigidbody2D _rigidbody;
