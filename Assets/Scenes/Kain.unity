@@ -1488,6 +1488,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreFirstBone: 1
+  animationSettings:
+  - speed: 1
+    amplitude: 10
+    perlinInterval: 0.1
+    perlinOffset: 0
+  - speed: 5
+    amplitude: 1.72
+    perlinInterval: 0.1
+    perlinOffset: 10
 --- !u!114 &1335191856
 MonoBehaviour:
   m_ObjectHideFlags: 0

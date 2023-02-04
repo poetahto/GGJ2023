@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,16 @@ public class ChainAnimation : MonoBehaviour
 
     public bool ignoreFirstBone;
     private float[] startRotations;
+    public animSettings[] animationSettings;
+
+    [Serializable]
+    public struct animSettings
+    {
+        public float speed;
+        public float amplitude;
+        public float perlinInterval;
+        public float perlinOffset;
+    }
 
     void Start()
     {
@@ -25,8 +36,19 @@ public class ChainAnimation : MonoBehaviour
         for (int i = ignoreFirstBone ? 1 : 0; i < spriteSkin.boneTransforms.Length; i++)
         {
             var bone = spriteSkin.boneTransforms[i];
-            var rotation = startRotations[i] + ((Mathf.PerlinNoise(Time.time, 0) * 2) - 1) * 45f;
-            bone.localEulerAngles = new Vector3(0, 0, rotation);
+            bone.localEulerAngles = new Vector3(0, 0, startRotations[i]);
+        }
+
+        foreach (animSettings animSet in animationSettings)
+        {
+            for (int i = ignoreFirstBone ? 1 : 0; i < spriteSkin.boneTransforms.Length; i++)
+            {
+                var bone = spriteSkin.boneTransforms[i];
+                var rotation =
+                    ((Mathf.PerlinNoise((Time.time * animSet.speed) + (i * animSet.perlinInterval),
+                        animSet.perlinOffset) * 2) - 1) * animSet.amplitude;
+                bone.localEulerAngles += new Vector3(0, 0, rotation);
+            }
         }
     }
 }
