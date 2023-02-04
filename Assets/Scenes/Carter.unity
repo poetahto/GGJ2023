@@ -2996,9 +2996,8 @@ MonoBehaviour:
   plantHunterPrefab: {fileID: 7586474010970626345, guid: d4617d576c061d44c8ed7fb23ae7c0d9, type: 3}
   playerHunterPrefab: {fileID: 6081423629110888976, guid: 4635dd2a11254a64fa4e46a338906837, type: 3}
   enemies: []
-  waveInterval: 5
-  PlantHuntersPerWave: 1
-  PlayerHuntersPerWave: 1
+  waveInterval: 1
+  PlayerHunterRatio: 0.5
   enemySpawnPositions:
   - {fileID: 1642412819}
   - {fileID: 1399574545}
@@ -3006,6 +3005,10 @@ MonoBehaviour:
   - {fileID: 467996072}
   - {fileID: 408247587}
   - {fileID: 1833898625}
+  spawnCheckRadius: 1
+  enemyBlockers:
+    serializedVersion: 2
+    m_Bits: 448
 --- !u!4 &1629545944
 Transform:
   m_ObjectHideFlags: 0

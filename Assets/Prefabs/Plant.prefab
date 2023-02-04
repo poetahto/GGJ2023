@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 13095005}
   - component: {fileID: 13095004}
   - component: {fileID: 13095003}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlantSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 91588743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 96540138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 213617895}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 631440464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 683684688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851496933}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1376136287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Position Target
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -407,9 +407,9 @@ GameObject:
   - component: {fileID: 4998163175341096882}
   - component: {fileID: 2405972221652427049}
   - component: {fileID: 1357520707775308857}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plant
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,6 +448,7 @@ MonoBehaviour:
   wiggleFrequency: 0.5
   wiggleAmplitude: 0.2
   currentState: 0
+  wanderRadius: 0
 --- !u!114 &1357520707775308857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +463,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 3
   maxHealth: 3
+  destroyOnDeath: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
   onDamage:
     m_PersistentCalls:
       m_Calls: []
