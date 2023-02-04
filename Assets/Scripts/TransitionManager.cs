@@ -2,22 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class TransitionManager : MonoBehaviour
 {
-
+    public static TransitionManager instance;
     public Transform SpawnPoint;
     public Image ScreenCover;
     public float fadeTime;
     public bool loading = false;
     public Transform player;
-    public ChoiceManager choiceManager;
-    public CombatManager combatManager;
     public bool combatRoom = false;
     public bool encounterComplete;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(fade(Color.black, Color.clear));
+        if (instance == null)
+        {
+            instance = this;
+            StartCoroutine(fade(Color.black, Color.clear));
+            StartNextEncounter();
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+        
     }
 
     // Update is called once per frame
@@ -38,24 +48,30 @@ public class TransitionManager : MonoBehaviour
         loading = true;
         
         StartCoroutine(fade(Color.clear,Color.black));
+        
         StartCoroutine(sceneSetup());
     }
     IEnumerator sceneSetup()
     {
         yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         StartCoroutine(fade(Color.black,Color.clear));
+        StartNextEncounter();
+    }
+    void StartNextEncounter()
+    {
         loading = false;
         player.transform.position = SpawnPoint.position;
         if (!combatRoom)
         {
-            combatManager.Cleanup();
-            choiceManager.SpawnNewPickups();
+            CombatManager.instance.Cleanup();
+            ChoiceManager.instance.SpawnNewPickups();
             combatRoom = !combatRoom;
         }
         else
         {
-            choiceManager.Cleanup();
-            combatManager.StartCombatEncounter();
+            ChoiceManager.instance.Cleanup();
+            CombatManager.instance.StartCombatEncounter();
             combatRoom = !combatRoom;
         }
         encounterComplete = false;

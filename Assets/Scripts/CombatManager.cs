@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
+    public static CombatManager instance;
     public float duration;
     public GameObject plantPrefab;
     GameObject plantInstance;
     public Transform plantSpawn;
-    public TransitionManager transitionManager;
     public GameObject plantHunterPrefab;
     public GameObject playerHunterPrefab;
     public List<GameObject> enemies;
@@ -20,8 +20,18 @@ public class CombatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        plantInstance = Instantiate(plantPrefab);
-        plantInstance.SetActive(false);
+        if (instance == null)
+        {
+            instance = this;
+            plantInstance = Instantiate(plantPrefab,transform);
+            plantInstance.SetActive(false);
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+
     }
 
     // Update is called once per frame
@@ -46,7 +56,7 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(SpawnEnemies());
         yield return new WaitForSeconds(duration);
         print("ending combat encounter");
-        transitionManager.encounterComplete = true;
+        TransitionManager.instance.encounterComplete = true;
         StopCoroutine(SpawnEnemies());
         killAllEnemies();
         spawning = false;

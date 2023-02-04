@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
+    public static ChoiceManager instance;
     public List<GameObject> PickupOptions;
     public List<GameObject> selectedOptions;
     public List<Transform> SpawnOptions;
     public int optionCount;
     public List<GameObject> choices;
-    public TransitionManager transitionManager;
     // Start is called before the first frame update
     void Start()
     {
-        SpawnNewPickups();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+
     }
 
     // Update is called once per frame
@@ -48,7 +57,7 @@ public class ChoiceManager : MonoBehaviour
             Destroy(choice);
         }
         choices.Clear();
-        transitionManager.encounterComplete = true;
+        TransitionManager.instance.encounterComplete = true;
     }
     public void Cleanup()
     {
