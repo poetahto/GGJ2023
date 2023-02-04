@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Plant : MonoBehaviour
 {
@@ -11,42 +13,67 @@ public class Plant : MonoBehaviour
     public float wiggleFrequency;
     public float wiggleAmplitude;
 
-    enum State
+    public State currentState;
+    private float waitTime;
+
+    public enum State
     {
         moveToTarget,
         wait,
     }
 
-void Start()
+    void Start()
     {
         positionTarget = transform.Find("Position Target").transform;
         positionTarget.parent = null;
-        StartCoroutine(Cycle());
+
+        waitTime = 1;
+        currentState = State.wait;
     }
 
-    IEnumerator Cycle()
+    private void Update()
     {
-        while (true)
+        switch (currentState)
         {
-            while (Vector2.Distance(transform.position, positionTarget.position) > 0.1f)
-            {
+            case State.moveToTarget:
                 transform.position = Vector2.SmoothDamp(transform.position, positionTarget.position, ref velocity,
                     smoothTime, maxSpeed);
+                AddWiggle();
 
-                Vector3 randomMovement = new Vector3(
-                    (Mathf.PerlinNoise(Time.time * wiggleFrequency, 0) * 2) - 1,
-                    (Mathf.PerlinNoise(0, Time.time * wiggleFrequency) * 2) - 1,
-                    0);
-                transform.position += randomMovement * (Time.deltaTime * wiggleAmplitude);
-                yield return null;
-            }
+                if (Vector2.Distance(transform.position, positionTarget.position) < 0.5f)
+                {
+                    waitTime = Random.Range(0.5f, 5f);
+                    currentState = State.wait;
+                }
 
-            yield return new WaitForSeconds(Random.Range(0.5f, 5f));
+                break;
+            case State.wait:
+                AddWiggle();
+                waitTime -= Time.deltaTime;
 
-            positionTarget.position = Random.insideUnitCircle * 2;
+                if (waitTime <= 0)
+                {
+                    NewTargetLocation();
+                    currentState = State.moveToTarget;
+                }
 
-
-            yield return null;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+    }
+
+    void AddWiggle()
+    {
+        Vector3 randomMovement = new Vector3(
+            (Mathf.PerlinNoise(Time.time * wiggleFrequency, 0) * 2) - 1,
+            (Mathf.PerlinNoise(0, Time.time * wiggleFrequency) * 2) - 1,
+            0);
+        transform.position += randomMovement * (Time.deltaTime * wiggleAmplitude);
+    }
+
+    void NewTargetLocation()
+    {
+        positionTarget.position = Random.insideUnitCircle * 2;
     }
 }
