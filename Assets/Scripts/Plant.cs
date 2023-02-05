@@ -32,10 +32,13 @@ public class Plant : MonoBehaviour
     public ChainGrow[] chainGrowers;
 
     private float _targetVolume = 0;
-    
+
+    public float firstWaitTime = 15;
+    bool grown = false;
     public enum State
     {
         beforePlant,
+        waitStill,
         moveToTarget,
         wait,
     }
@@ -54,8 +57,6 @@ public class Plant : MonoBehaviour
         startPosition = transform.position;
 
         currentHeartCount = heartStems.Length;
-
-        waitTime = 15;
     }
 
     private void OnEnable()
@@ -72,6 +73,11 @@ public class Plant : MonoBehaviour
 
     private void Update()
     {
+        if (!grown && (currentState == State.wait || currentState == State.moveToTarget))
+        {
+            grown = true;
+            FindObjectOfType<CombatManager>().beginCombat();
+        }
         for (int i = 0; i < currentHeartCount; i++)
         {
             float scale = heartBeat.Evaluate(Time.time + (i * 0.1f));
@@ -102,6 +108,19 @@ public class Plant : MonoBehaviour
                 _targetVolume = Mathf.Lerp(_targetVolume, 0, movementLoopVolumeSmoothing * Time.deltaTime);
                 
                 AddWiggle();
+                waitTime -= Time.deltaTime;
+
+                if (waitTime <= 0)
+                {
+                    NewTargetLocation();
+                    currentState = State.moveToTarget;
+                }
+
+                break;
+            case State.waitStill:
+
+                _targetVolume = Mathf.Lerp(_targetVolume, 0, movementLoopVolumeSmoothing * Time.deltaTime);
+                
                 waitTime -= Time.deltaTime;
 
                 if (waitTime <= 0)
@@ -154,10 +173,19 @@ public class Plant : MonoBehaviour
     [EasyButtons.Button]
     public void Grow()
     {
-        currentState = State.wait;
+        waitTime = firstWaitTime;
+        currentState = State.waitStill;
         foreach (var chainGrow in chainGrowers)
         {
             chainGrow.growing = true;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            print("start growth");
+            Grow();
         }
     }
 }

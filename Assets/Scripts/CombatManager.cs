@@ -57,11 +57,17 @@ public class CombatManager : MonoBehaviour
     {
         print("started combat encounter");
         resetPlant();
+        //StartCoroutine(combatDuration());
+    }
+    public void beginCombat()
+    {
         StartCoroutine(combatDuration());
+
     }
     void resetPlant()
     {
-        plantInstance.transform.position = plantSpawn.position;
+        Destroy(plantInstance);
+        plantInstance = Instantiate(plantPrefab, plantSpawn.position, Quaternion.identity);
         plantInstance.SetActive(true);
     }
     IEnumerator combatDuration()
@@ -83,6 +89,7 @@ public class CombatManager : MonoBehaviour
         timer.gameObject.SetActive(false);
         killAllEnemies();
         spawning = false;
+        Destroy(plantInstance);
     }
     IEnumerator SpawnEnemies()
     {
