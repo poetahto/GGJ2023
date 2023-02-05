@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using DefaultNamespace;
 using FMOD.Studio;
 using FMODUnity;
-using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using STOP_MODE = FMOD.Studio.STOP_MODE;
+using UnityEngine.UI;
 
 public class TransitionManager : MonoBehaviour
 {
@@ -23,6 +21,12 @@ public class TransitionManager : MonoBehaviour
     public TextMeshProUGUI FloorDisplay;
     public int floorCount;
     public EventReference selectionMusic;
+    bool quoteDisplayed = false;
+    public TextMeshProUGUI quoteText;
+    public List<string> lowQuotes;
+    public List<string> highQuotes;
+    public List<string> lowDeathQuotes;
+    public List<string> highDeathQuotes;
     // Start is called before the first frame update
 
     private EventInstance _selectionMusic;
@@ -75,7 +79,13 @@ public class TransitionManager : MonoBehaviour
         floorCount = 0;
         FloorDisplay.text = "Floor " + floorCount.ToString();
         player.gameObject.SetActive(true);
-
+        ChangeDeathQuoteText();
+        StartCoroutine(CycleQuote(Color.clear, Color.black));
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
+        StartCoroutine(CycleQuote(Color.black, Color.clear));
         SceneManager.LoadScene("PickupRoom");
         floorCount++;
         FloorDisplay.text = "Floor " + floorCount.ToString();
@@ -109,9 +119,47 @@ public class TransitionManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-  1);
+            ChangeQuoteText();
+            StartCoroutine(CycleQuote(Color.clear, Color.white));
+            while (!Input.GetMouseButtonDown(0))
+            {
+                yield return null;
+            }
+            StartCoroutine(CycleQuote(Color.white, Color.clear));
         }
+        
         StartCoroutine(fade(Color.black,Color.clear));
         StartCoroutine(StartNextEncounter());
+    }
+    void ChangeQuoteText()
+    {
+        if(floorCount<5)
+            quoteText.text = lowQuotes[Random.Range(0, lowQuotes.Count)];
+        else
+        {
+            quoteText.text = highQuotes[Random.Range(0, highQuotes.Count)];
+        }
+    }
+    void ChangeDeathQuoteText()
+    {
+        if (floorCount < 5)
+            quoteText.text = lowDeathQuotes[Random.Range(0, lowDeathQuotes.Count)];
+        else
+        {
+            quoteText.text = highDeathQuotes[Random.Range(0, highDeathQuotes.Count)];
+        }
+    }
+    IEnumerator CycleQuote(Color start, Color end)
+    {
+        quoteText.color = start;
+        for (float t = 0f; t < fadeTime; t += Time.deltaTime)
+        {
+            float normalizedTime = t / fadeTime;
+            //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
+            quoteText.color = Color.Lerp(start, end, normalizedTime);
+            yield return null;
+        }
+        quoteText.color = end;
     }
     IEnumerator StartNextEncounter()
     {
