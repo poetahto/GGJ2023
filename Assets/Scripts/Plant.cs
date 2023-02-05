@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,8 +19,10 @@ public class Plant : MonoBehaviour
     private Vector3 startPosition;
     public float wanderRadius;
 
+    public Transform[] heartStems;
     public Transform[] hearts;
     private int currentHeartCount;
+    public AnimationCurve heartBeat;
 
     public enum State
     {
@@ -33,7 +36,7 @@ public class Plant : MonoBehaviour
         positionTarget.parent = null;
         startPosition = transform.position;
 
-        currentHeartCount = hearts.Length;
+        currentHeartCount = heartStems.Length;
 
         waitTime = 1;
         currentState = State.wait;
@@ -51,6 +54,13 @@ public class Plant : MonoBehaviour
 
     private void Update()
     {
+        for (int i = 0; i < currentHeartCount; i++)
+        {
+            float scale = heartBeat.Evaluate(Time.time + (i * 0.1f));
+            hearts[i].localScale = new Vector3(scale, scale, 1);
+            print(hearts[i] + ":" + hearts[i].localScale);
+        }
+        
         switch (currentState)
         {
             case State.moveToTarget:
@@ -107,7 +117,7 @@ public class Plant : MonoBehaviour
     {
         if (currentHeartCount <= 0) return;
         currentHeartCount--;
-        Transform heart = hearts[currentHeartCount];
+        Transform heart = heartStems[currentHeartCount];
         heart.parent = null;
         var rb = heart.gameObject.AddComponent<Rigidbody>();
         rb.drag = 0.5f;

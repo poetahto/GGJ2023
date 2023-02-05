@@ -1025,6 +1025,22 @@ MonoBehaviour:
     amplitude: 5
     interval: 0.5
     offset: 0.8
+--- !u!1 &4844098597993154753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5778601490377971437, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
+  m_PrefabInstance: {fileID: 7852019962819633618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &3697193081768763793
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844098597993154753}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &6032699607016726514 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4562022012725050912, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}

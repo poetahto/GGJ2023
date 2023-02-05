@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SpriteShadow
-  m_Shader: {fileID: -6465566751694194690, guid: 01e691e87a9d2a140b359f54ead237a4, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5ab5df18cf9d1104887bcc44f1c8e2bf, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -93,6 +93,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _Mult: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
