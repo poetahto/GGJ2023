@@ -2,18 +2,18 @@
 
 namespace BulletModifications
 {
-    public class CollisionParticleEffect : BulletModifier
+    public class SpawnOnCollision : BulletModifier
     {
         private readonly GameObject _particlePrefab;
         
-        public CollisionParticleEffect(GameObject particlePrefab)
+        public SpawnOnCollision(GameObject particlePrefab)
         {
             _particlePrefab = particlePrefab;
         }
 
         public override BulletModifier Copy()
         {
-            return new CollisionParticleEffect(_particlePrefab);
+            return new SpawnOnCollision(_particlePrefab);
         }
 
         public override void OnHit(Collider col)

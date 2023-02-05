@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewPrefab: {fileID: 8413512584020217247, guid: c23be3f4e18bd0848b98c7b97149c03b, type: 3}
+  eruptParticles: {fileID: 5143643390762270836, guid: bbdf28af8b0d0b64580d528c915b8325, type: 3}
 --- !u!1 &3473541675837148394
 GameObject:
   m_ObjectHideFlags: 0

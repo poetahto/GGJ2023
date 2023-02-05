@@ -1,24 +1,40 @@
 ﻿using System.Collections.Generic;
 using Effects;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DecisionItemFactory : MonoBehaviour
 {
     public DecisionItemView viewPrefab;
+    public GameObject eruptParticles;
+
+    public List<Effect> PotentialPacts;
         
-    public readonly List<Effect> PotentialPacts = new List<Effect>()
+    public List<Effect> PotentialCurses;
+
+    private void Awake()
     {
-        new HigherBulletDamage(1),
-        new MaxHealthBoost(1),
-    };
+        PotentialPacts = new List<Effect>()
+        {
+            new HigherBulletDamage(1),
+            new MaxHealthBoost(1),
+            new IncreaseBulletSpeed(1),
+            new IncreaseFireRate(1),
+            new HealOnHit(0.25f),
+            new BiggerBullets(0.25f),
+            new PiercingEffect(),
+            new ExplodeOnImpact(1, 1, eruptParticles),
+            new IncreaseBulletsPerShot(1),
+        };
         
-    public readonly List<Effect> PotentialCurses = new List<Effect>()
-    {
-        new LowFrictionEffect(1),
-        new StandStillDamage(0.5f, 1),
-        new TakeMoreDamage(0.5f),
-        new LowerVisibility(0.25f),
-    };
+        PotentialCurses = new List<Effect>()
+        {
+            new LowFrictionEffect(1),
+            new StandStillDamage(0.5f, 1),
+            new TakeMoreDamage(0.5f),
+            new LowerVisibility(0.25f),
+        };
+    }
 
     public GameObject Create()
     {
