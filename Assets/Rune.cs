@@ -43,7 +43,8 @@ public class Rune : MonoBehaviour, IResettable
     {
         rune = transform.GetChild(0).GetComponent<SpriteRenderer>();
         glow = rune.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        SetRuneIndex(runeIndex);
+        SetRuneIndex(Random.Range(0, runes.Length));
+        glow.color = Color.HSVToRGB(Random.Range(0f, 1f), 1f, 1f);
 
         if (orbitAround != null)
             transform.parent = orbitAround;
