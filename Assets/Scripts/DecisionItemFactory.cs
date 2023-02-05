@@ -8,13 +8,16 @@ public class DecisionItemFactory : MonoBehaviour
         
     public readonly List<Effect> PotentialPacts = new List<Effect>()
     {
-        new HigherBulletDamage(1),
-        new MaxHealthBoost(1),
+        // new HigherBulletDamage(1),
+        // new MaxHealthBoost(1),
+        // new IncreaseBulletSpeed(1),
+        // new IncreaseFireRate(1),
+        new HealOnHit(0.25f),
     };
         
     public readonly List<Effect> PotentialCurses = new List<Effect>()
     {
-        new LowFrictionEffect(1),
+        // new LowFrictionEffect(1),
         new StandStillDamage(0.5f, 1),
         new TakeMoreDamage(0.5f),
         new LowerVisibility(0.25f),
