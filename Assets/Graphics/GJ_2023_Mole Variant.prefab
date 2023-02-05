@@ -545,6 +545,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d85865b66bb514e9a2f910d6dea158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posAmp: {x: 0, y: 0.1, z: 0}
+  rotAmp: {x: 0, y: 0, z: 0}
+  scaleAmp: {x: 0, y: 0, z: 0}
+  speed: 1
+  offset: 0
 --- !u!1 &6514188425490281231 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6923744692774783805, guid: 129d49da69fe58f429711e2ccf61930f, type: 3}
