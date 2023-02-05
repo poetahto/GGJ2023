@@ -6,47 +6,77 @@ using UnityEngine.U2D.Animation;
 
 public class ChainAnimation : MonoBehaviour
 {
-    private SpriteSkin spriteSkin;
-
     public bool ignoreFirstBone;
     private float[] startRotations;
+    private List<Transform> bones = new List<Transform>();
     public animSettings[] animationSettings;
+
+    public enum AnimationType
+    {
+        Perlin,
+        Sin,
+    }
 
     [Serializable]
     public struct animSettings
     {
+        public AnimationType animationType;
         public float speed;
         public float amplitude;
-        public float perlinInterval;
-        public float perlinOffset;
+        public float interval;
+        public float offset;
     }
 
     void Start()
     {
-        spriteSkin = GetComponent<SpriteSkin>();
-        startRotations = new float[spriteSkin.boneTransforms.Length];
-        for (int i = 0; i < spriteSkin.boneTransforms.Length; i++)
+        var t = transform;
+        bones.Add(t);
+        while (t.childCount > 0)
         {
-            startRotations[i] = spriteSkin.boneTransforms[i].localEulerAngles.z;
+            t = t.GetChild(0);
+            bones.Add(t);
+        }
+
+
+        startRotations = new float[bones.Count];
+        for (int i = 0; i < bones.Count; i++)
+        {
+            startRotations[i] = bones[i].localEulerAngles.z;
         }
     }
 
+    float rotation;
+    
     void Update()
     {
-        for (int i = ignoreFirstBone ? 1 : 0; i < spriteSkin.boneTransforms.Length; i++)
+        for (int i = ignoreFirstBone ? 1 : 0; i < bones.Count; i++)
         {
-            var bone = spriteSkin.boneTransforms[i];
+            var bone = bones[i];
             bone.localEulerAngles = new Vector3(0, 0, startRotations[i]);
         }
 
         foreach (animSettings animSet in animationSettings)
         {
-            for (int i = ignoreFirstBone ? 1 : 0; i < spriteSkin.boneTransforms.Length; i++)
+            for (int i = ignoreFirstBone ? 1 : 0; i < bones.Count; i++)
             {
-                var bone = spriteSkin.boneTransforms[i];
-                var rotation =
-                    ((Mathf.PerlinNoise((Time.time * animSet.speed) + (i * animSet.perlinInterval),
-                        animSet.perlinOffset) * 2) - 1) * animSet.amplitude;
+                var bone = bones[i];
+
+                switch (animSet.animationType)
+                {
+                    case AnimationType.Perlin:
+                        rotation =
+                            ((Mathf.PerlinNoise((Time.time * animSet.speed) + (i * animSet.interval),
+                                animSet.offset) * 2) - 1) * animSet.amplitude;
+                        break;
+                    case AnimationType.Sin:
+                        rotation = Mathf.Sin(((Time.time + animSet.offset) * animSet.speed) + (i * animSet.interval)) *
+                                   animSet.amplitude;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+
                 bone.localEulerAngles += new Vector3(0, 0, rotation);
             }
         }
