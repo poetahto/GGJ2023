@@ -23,12 +23,14 @@ public class PlayerRendering : MonoBehaviour
         float t = Mathf.InverseLerp(-maxSpeed, maxSpeed, rb.velocity.x);
         float tilt = Mathf.Lerp(maxTilt, -maxTilt, t);
         spriteRoot.localEulerAngles = new Vector3(0, 0, tilt);
-        spriteRoot.localScale = new Vector3(tilt > 0 ? -1 : 1, 1, 1);
+        if (Mathf.Abs(tilt) > 0.1f)
+            spriteRoot.localScale = new Vector3(tilt > 0 ? -1 : 1, 1, 1);
         foreach (ChainAnimation chainAnimation in chainAnimations)
         {
             foreach (ChainAnimation.AnimSettings animationSetting in chainAnimation.animationSettings)
             {
-                animationSetting.MultAmplitude(Mathf.Abs(tilt) / maxTilt);
+                float w = Mathf.InverseLerp(0, maxSpeed, rb.velocity.magnitude);
+                animationSetting.MultAmplitude(w);
             }
         }
     }
