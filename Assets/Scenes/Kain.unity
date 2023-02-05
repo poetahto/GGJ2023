@@ -434,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 288836108}
     - target: {fileID: 6344392166358002244, guid: 857e6bc4daca82e4aaa5167852d602f6, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6344392166358002244, guid: 857e6bc4daca82e4aaa5167852d602f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -681,7 +681,7 @@ Transform:
   m_Children:
   - {fileID: 413804171}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &413804168
 GameObject:
@@ -803,6 +803,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4998163175341096882, guid: bef6f956dbd8632419e69d5709820ce8, type: 3}
   m_PrefabInstance: {fileID: 2693258465277462228}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &475499679
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4826757982366268270, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_Name
+      value: Plant Rusher Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.9174063
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5115186
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826757982366268273, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
 --- !u!1 &532972199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1440,7 @@ PrefabInstance:
       objectReference: {fileID: 1450946189}
     - target: {fileID: 2385787433650490526, guid: a74e5f6346ebcc34d9a669951455226f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2385787433650490526, guid: a74e5f6346ebcc34d9a669951455226f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2106,7 +2163,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 33.425, y: -168.073, z: 117.749}
 --- !u!1001 &1194339197
 PrefabInstance:
@@ -12785,63 +12842,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1001 &3768074261144108958
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.622
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.208
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.073
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3269271165315351020, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4437964389861546383, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
-      propertyPath: m_Name
-      value: GJ_2023_Mole
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2d951673b98f53644bc91140920d5b92, type: 3}
 --- !u!199 &5404274263670507807
 ParticleSystemRenderer:
   serializedVersion: 6
