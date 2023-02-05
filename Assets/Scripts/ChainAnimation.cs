@@ -9,7 +9,7 @@ public class ChainAnimation : MonoBehaviour
     public bool ignoreFirstBone;
     private float[] startRotations;
     private List<Transform> bones = new List<Transform>();
-    public animSettings[] animationSettings;
+    public AnimSettings[] animationSettings;
 
     public enum AnimationType
     {
@@ -18,10 +18,16 @@ public class ChainAnimation : MonoBehaviour
     }
 
     [Serializable]
-    public struct animSettings
+    public class AnimSettings
     {
+        public void MultAmplitude(float mult)
+        {
+            amplitude = originalAmplitude * mult;
+        }
+
         public AnimationType animationType;
         public float speed;
+        [HideInInspector] public float originalAmplitude;
         public float amplitude;
         public float interval;
         public float offset;
@@ -37,6 +43,11 @@ public class ChainAnimation : MonoBehaviour
             bones.Add(t);
         }
 
+        foreach (AnimSettings animationSetting in animationSettings)
+        {
+            animationSetting.originalAmplitude = animationSetting.amplitude;
+        }
+
 
         startRotations = new float[bones.Count];
         for (int i = 0; i < bones.Count; i++)
@@ -46,7 +57,7 @@ public class ChainAnimation : MonoBehaviour
     }
 
     float rotation;
-    
+
     void Update()
     {
         for (int i = ignoreFirstBone ? 1 : 0; i < bones.Count; i++)
@@ -55,7 +66,7 @@ public class ChainAnimation : MonoBehaviour
             bone.localEulerAngles = new Vector3(0, 0, startRotations[i]);
         }
 
-        foreach (animSettings animSet in animationSettings)
+        foreach (AnimSettings animSet in animationSettings)
         {
             for (int i = ignoreFirstBone ? 1 : 0; i < bones.Count; i++)
             {
