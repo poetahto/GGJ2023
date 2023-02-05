@@ -1,12 +1,9 @@
-﻿using Events;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Effects
 {
-    public class IgnoreLayerEffect : Effect
+    public class ChildrenEffects : Effect
     {
-        public LayerMask mask;
-
         public override string GetName()
         {
             return string.Empty;
@@ -19,15 +16,20 @@ namespace Effects
 
         public override void ApplyTo(GameObject obj)
         {
-            if (obj.TryGetComponent(out Collider col))
+            foreach (var effect in GetComponentsInChildren<Effect>())
             {
-                var te = col.GetTriggerEvents();
-                te.ExcludeLayers = mask;
+                if (effect != this)
+                    effect.ApplyTo(obj);
             }
         }
 
         public override void RemoveFrom(GameObject obj)
         {
+            foreach (var effect in GetComponentsInChildren<Effect>())
+            {
+                if (effect != this)
+                    effect.RemoveFrom(obj);
+            }
         }
     }
 }
