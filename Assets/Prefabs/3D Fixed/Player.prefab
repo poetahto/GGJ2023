@@ -433,6 +433,7 @@ MonoBehaviour:
   bulletSpeed: 1
   fireRate: 1
   spread: 0
+  shaker: {fileID: 0}
 --- !u!114 &2020661123973391977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +460,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRoot: {fileID: 8923931619752286220}
   maxTilt: 10
+  rotateTime: 10
+  useRotationLerping: 1
 --- !u!1 &6384251713270343230
 GameObject:
   m_ObjectHideFlags: 0
