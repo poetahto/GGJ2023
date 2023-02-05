@@ -44,7 +44,7 @@ public class ChainGrow : MonoBehaviour
             scale = Mathf.Sqrt(scale);
             bone.localScale = new Vector3(scale, scale, 1);
 
-            if (t > animationCurve.keys[animationCurve.length - 1].time + (timeOffset * i))
+            if (t > animationCurve.keys[animationCurve.length - 1].time + (timeOffset * bones.Count))
                 Destroy(this);
         }
     }
