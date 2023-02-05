@@ -138,5 +138,7 @@ public class CombatManager : MonoBehaviour
     {
         if(plantInstance)
         plantInstance.SetActive(false);
+        
+        timer.gameObject.SetActive(false);
     }
 }

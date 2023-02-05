@@ -55,17 +55,17 @@ public class TransitionManager : MonoBehaviour
 
     private IEnumerator PlayerDeathRestartCoroutine()
     {
+        foreach (var resettable in player.GetComponents<IResettable>())
+        {
+            resettable.ResetObject();
+        }
         yield return fade(Color.clear, Color.white);
 
         CombatManager.instance.killAllEnemies();
         CombatManager.instance.StopAllCoroutines();
         CombatManager.instance.Cleanup();
-        // combatRoom = false;
-        
-        foreach (var resettable in player.GetComponents<IResettable>())
-        {
-            resettable.ResetObject();
-        }
+        combatRoom = false;
+        encounterComplete = true;
         
         player.gameObject.SetActive(true);
         

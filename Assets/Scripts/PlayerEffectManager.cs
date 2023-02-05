@@ -25,6 +25,9 @@ public class PlayerEffectManager : MonoBehaviour, IResettable
 
     public void RemoveAllEffects()
     {
+        if (_effects.Count <= 0)
+            return;
+        
         for (int i = _effects.Count - 1; i >= 0; i--)
         {
             RemoveEffect(_effects[i]);
@@ -33,9 +36,12 @@ public class PlayerEffectManager : MonoBehaviour, IResettable
 
     private void Update()
     {
-        foreach (var effect in _effects)
+        if (_effects.Count <= 0)
+            return;
+        
+        for (int i = _effects.Count - 1; i >= 0; i--)
         {
-            effect.Update();
+            _effects[i].Update();
         }
     }
 
