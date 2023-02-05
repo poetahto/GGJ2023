@@ -69,10 +69,4 @@ public class BulletSpawner : MonoBehaviour
         }
         else _cooldownTime -= Time.deltaTime;
     }
-
-    private void OnGUI()
-    {
-            var angle = Mathf.Atan2(FiringDirection.x, FiringDirection.z) * Mathf.Rad2Deg;
-        GUILayout.Label(angle.ToString());
-    }
 }

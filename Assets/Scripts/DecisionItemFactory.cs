@@ -17,6 +17,7 @@ public class DecisionItemFactory : MonoBehaviour
         new LowFrictionEffect(1),
         new StandStillDamage(0.5f, 1),
         new TakeMoreDamage(0.5f),
+        new LowerVisibility(0.25f),
     };
 
     public GameObject Create()
