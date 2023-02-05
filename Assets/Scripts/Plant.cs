@@ -28,6 +28,8 @@ public class Plant : MonoBehaviour
     public AnimationCurve heartBeat;
     public EventReference movementLoop;
     public float movementLoopVolumeSmoothing = 5f;
+    
+    public ChainGrow[] chainGrowers;
 
     private float _targetVolume = 0;
     
@@ -41,6 +43,7 @@ public class Plant : MonoBehaviour
 
     void Start()
     {
+        chainGrowers = GetComponentsInChildren<ChainGrow>();
         _movementLoop = RuntimeManager.CreateInstance(movementLoop);
         _movementLoop.start();
         _movementLoop.setVolume(0);
@@ -146,5 +149,14 @@ public class Plant : MonoBehaviour
         var rb = heart.gameObject.AddComponent<Rigidbody>();
         rb.drag = 0.5f;
         heart.gameObject.GetComponent<DeadHeart>().startDeath = true;
+    }
+
+    [EasyButtons.Button]
+    public void Grow()
+    {
+        foreach (var chainGrow in chainGrowers)
+        {
+            chainGrow.growing = true;
+        }
     }
 }
