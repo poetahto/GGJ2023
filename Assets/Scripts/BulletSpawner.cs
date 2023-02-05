@@ -15,6 +15,7 @@ public class BulletSpawner : MonoBehaviour
     public float fireRate;
     public float spread = 10f;
 
+    public ScreenShaker shaker;
     private float _cooldownTime;
     
     public Vector3 FiringDirection { get; set; }
@@ -30,11 +31,13 @@ public class BulletSpawner : MonoBehaviour
 
     private void Update()
     {
+        
         if (IsFiring && _cooldownTime <= 0)
         {
             // todo: pool
             var instance = Instantiate(bulletPrefab);
-            
+            if(shaker)
+            shaker.ShootShake();
             foreach (var effect in bulletEffects)
             {
                 effect.ApplyTo(instance);
