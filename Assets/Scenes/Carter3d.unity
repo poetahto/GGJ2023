@@ -1239,7 +1239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448598531427209542, guid: b005849f0ba276e4f9894837943b3b77, type: 3}
       propertyPath: duration
-      value: 10
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448598531427209542, guid: b005849f0ba276e4f9894837943b3b77, type: 3}
+      propertyPath: PlayerHunterRatio
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1448598531427209543, guid: b005849f0ba276e4f9894837943b3b77, type: 3}
       propertyPath: m_Name
