@@ -58,7 +58,6 @@ public class Plant : MonoBehaviour
         {
             float scale = heartBeat.Evaluate(Time.time + (i * 0.1f));
             hearts[i].localScale = new Vector3(scale, scale, 1);
-            print(hearts[i] + ":" + hearts[i].localScale);
         }
         
         switch (currentState)

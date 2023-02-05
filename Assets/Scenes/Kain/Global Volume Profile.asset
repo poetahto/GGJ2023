@@ -86,6 +86,7 @@ MonoBehaviour:
   - {fileID: -3468264449455485807}
   - {fileID: -3369584395154417805}
   - {fileID: 1393934220239536006}
+  - {fileID: 3504689872300464995}
 --- !u!114 &1393934220239536006
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -132,11 +133,30 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.292
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 0.424
   rounded:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &3504689872300464995
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  temperature:
+    m_OverrideState: 1
+    m_Value: 7.9
+  tint:
     m_OverrideState: 0
     m_Value: 0
 --- !u!114 &5975951011463399276
