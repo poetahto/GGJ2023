@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
         public float reverseMultiplier;
     }
 
-    [SerializeField] private float decelerationAmount = 5;
+    [SerializeField] public float decelerationAmount = 5;
     [SerializeField] public MovementSettings groundedMovement;
 
     private Rigidbody _rigidbody;

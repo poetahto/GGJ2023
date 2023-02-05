@@ -6,7 +6,17 @@ namespace Effects
     {
         public float amount;
         public bool fullHeal;
-    
+
+        public override string GetName()
+        {
+            return "Health Restore";
+        }
+
+        public override string GetDescription()
+        {
+            return "Restores your health.";
+        }
+
         public override void ApplyTo(GameObject obj)
         {
             if (obj.TryGetComponent(out Health health))
