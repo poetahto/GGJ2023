@@ -120,12 +120,13 @@ public class CombatManager : MonoBehaviour
         {
             Transform t=enemySpawnPositions[Random.Range(0, enemySpawnPositions.Count)];
             Vector3 potentialSpawnPos = t.position;
+            print(potentialSpawnPos);
             checkedSpawnPositions.Add(t);
             enemySpawnPositions.Remove(t);
             RaycastHit hit;
-            if (Physics.SphereCast(spawnPos, spawnCheckRadius,Vector2.down, out hit, 0,enemyBlockers))
+            if (Physics.SphereCast(potentialSpawnPos, spawnCheckRadius,Vector3.down, out hit, 1,enemyBlockers))
             {
-                ;
+                print("spawn blocked");
             }
             else
             {
