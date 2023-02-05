@@ -45,15 +45,20 @@ public class PlayerEffectManager : MonoBehaviour, IResettable
         }
     }
 
+    public bool showDebug = false;
+    
     private void OnGUI()
     {
-        foreach (var effect in _effects)
+        if (showDebug)
         {
-            GUILayout.Label(effect.Name);
-        }
+            foreach (var effect in _effects)
+            {
+                GUILayout.Label(effect.Name);
+            }
         
-        if (GUILayout.Button("Remove all"))
-            RemoveAllEffects();
+            if (GUILayout.Button("Remove all"))
+                RemoveAllEffects();
+        }
     }
 
     public void ResetObject()

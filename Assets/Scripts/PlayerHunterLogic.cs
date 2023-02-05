@@ -41,6 +41,7 @@ public class PlayerHunterLogic : MonoBehaviour
             return;
         }
         var distToTarget = _target.position - transform.position;
+        distToTarget.y = 0;
         var dirToTarget = distToTarget.normalized;
         _spawner.FiringDirection = dirToTarget;
 
