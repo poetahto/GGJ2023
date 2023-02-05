@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Effects
 {
-    public class CollectEffects : MonoBehaviour
+    public class MultiEffect : MonoBehaviour
     {
         public List<Effect> effects;
 

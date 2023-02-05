@@ -5,7 +5,11 @@ namespace Effects
     public class MaxHealthBoost : Effect
     {
         public float amount;
-    
+
+        public override string GetName() => "Stature";
+
+        public override string GetDescription() => "Your maximum health is increased.";
+
         public override void ApplyTo(GameObject obj)
         {
             if (obj.TryGetComponent(out Health health))
