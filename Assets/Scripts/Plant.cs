@@ -17,7 +17,7 @@ public class Plant : MonoBehaviour
     public float wiggleFrequency;
     public float wiggleAmplitude;
 
-    public State currentState;
+    public State currentState = State.beforePlant;
     private float waitTime;
     private Vector3 startPosition;
     public float wanderRadius;
@@ -35,6 +35,7 @@ public class Plant : MonoBehaviour
     
     public enum State
     {
+        beforePlant,
         moveToTarget,
         wait,
     }
@@ -54,8 +55,7 @@ public class Plant : MonoBehaviour
 
         currentHeartCount = heartStems.Length;
 
-        waitTime = 1;
-        currentState = State.wait;
+        waitTime = 5;
     }
 
     private void OnEnable()
@@ -154,6 +154,7 @@ public class Plant : MonoBehaviour
     [EasyButtons.Button]
     public void Grow()
     {
+        currentState = State.wait;
         foreach (var chainGrow in chainGrowers)
         {
             chainGrow.growing = true;
