@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -7,23 +8,45 @@ namespace Effects
 {
     public class DecisionItemView : MonoBehaviour
     {
-        public TMP_Text display;
+        public float delayTime = 2;
+        public TMP_Text displayPact;
+        public List<TMP_Text> displayCurses;
 
-        public void UpdateData(IEnumerable<Effect> pacts, IEnumerable<Effect> curses)
+        private TMP_Text _trueCurseText;
+
+        public void CollectAnimation()
         {
-            var sb = new StringBuilder();
+            StartCoroutine(CollectAnimCoroutine());
+        }
 
-            foreach (var pact in pacts)
+        private IEnumerator CollectAnimCoroutine()
+        {
+            foreach (var displayCurse in displayCurses)
             {
-                sb.AppendLine($"<color=green>{pact.GetName()} - <i>{pact.GetDescription()}</i></color>");
+                if (displayCurse != _trueCurseText)
+                {
+                    displayCurse.enabled = false;
+                }
             }
+
+            yield return new WaitForSeconds(delayTime);
+
+            gameObject.SetActive(false);
             
-            foreach (var curse in curses)
-            {
-                sb.AppendLine($"<color=red>{curse.GetName()} - <i>{curse.GetDescription()}</i></color>");
-            }
+        }
 
-            display.text = sb.ToString();
+        public void UpdateData(Effect pact, Effect trueCurse, IList<Effect> cursesRandom)
+        {
+            displayPact.text = $"<color=green>{pact.GetName()} - <i>{pact.GetDescription()}</i></color>";
+
+            for (int i = 0; i < cursesRandom.Count; i++)
+            {
+                displayCurses[i].text = $"<color=red>{cursesRandom[i].GetName()} - <i>{cursesRandom[i].GetDescription()}</i></color>";
+                if (cursesRandom[i] == trueCurse)
+                {
+                    _trueCurseText = displayCurses[i];
+                }
+            }
         }
     }
 }

@@ -38,8 +38,9 @@ namespace Effects
             
             Instantiate(pactList[0], result.transform);
             Instantiate(curseList[0], result.transform);
+            var trueCurse = curseList[0];
             Shuffle(curseList);
-            result.UpdateData(pactList, curseList);
+            result.UpdateData(pactList[0], trueCurse, curseList);
             
             return result.gameObject;
         }
