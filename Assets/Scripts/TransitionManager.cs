@@ -36,6 +36,11 @@ public class TransitionManager : MonoBehaviour
     {
         instance = null;
     }
+
+    public void SetIntensity(float value)
+    {
+        _selectionMusic.setParameterByName("Battle_Intensity", value);
+    }
     
     void Awake()
     {
@@ -50,6 +55,7 @@ public class TransitionManager : MonoBehaviour
             StartCoroutine(StartNextEncounter());
             DontDestroyOnLoad(gameObject);
             _selectionMusic = RuntimeManager.CreateInstance(selectionMusic);
+            _selectionMusic.start();
         }
         else
         {
@@ -171,7 +177,6 @@ public class TransitionManager : MonoBehaviour
             CombatManager.instance.Cleanup();
             ChoiceManager.instance.SpawnNewPickups();
             combatRoom = !combatRoom;
-            _selectionMusic.start();
         }
         else
         {

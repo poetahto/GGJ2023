@@ -75,14 +75,17 @@ public class CombatManager : MonoBehaviour
         timer.value = 0;
         timer.gameObject.SetActive(true);
         spawning = true;
+        TransitionManager.instance.SetIntensity(1);
         StartCoroutine(SpawnEnemies());
         for (float t = 0f; t < duration; t += Time.deltaTime)
         {
             float normalizedTime = t / duration;
             //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
             timer.value = normalizedTime;
+            TransitionManager.instance.SetIntensity(normalizedTime);
             yield return null;
         }
+        TransitionManager.instance.SetIntensity(0);
         print("ending combat encounter");
         TransitionManager.instance.encounterComplete = true;
         StopCoroutine(SpawnEnemies());
@@ -167,6 +170,7 @@ public class CombatManager : MonoBehaviour
         if(plantInstance)
         plantInstance.SetActive(false);
         
+        TransitionManager.instance.SetIntensity(0);
         timer.gameObject.SetActive(false);
     }
 }
