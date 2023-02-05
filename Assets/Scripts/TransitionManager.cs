@@ -6,6 +6,7 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -19,7 +20,8 @@ public class TransitionManager : MonoBehaviour
     public GameObject player;
     public bool combatRoom = false;
     public bool encounterComplete;
-
+    public TextMeshProUGUI FloorDisplay;
+    public int floorCount;
     public EventReference selectionMusic;
     // Start is called before the first frame update
 
@@ -70,7 +72,8 @@ public class TransitionManager : MonoBehaviour
         CombatManager.instance.Cleanup();
         combatRoom = false;
         encounterComplete = true;
-        
+        floorCount = 0;
+        FloorDisplay.text = "Floor " + floorCount.ToString();
         player.gameObject.SetActive(true);
         
         yield return sceneSetup();
@@ -96,6 +99,9 @@ public class TransitionManager : MonoBehaviour
     IEnumerator sceneSetup()
     {
         yield return new WaitForSeconds(fadeTime);
+        print("new floor");
+        floorCount++;
+        FloorDisplay.text = "Floor " + floorCount.ToString();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         StartCoroutine(fade(Color.black,Color.clear));
         StartCoroutine(StartNextEncounter());
