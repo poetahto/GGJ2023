@@ -20,6 +20,8 @@ public class DecisionItemView : MonoBehaviour
 
     private IEnumerator CollectAnimCoroutine()
     {
+        GetComponent<Collider>().enabled = false;
+        
         foreach (var displayCurse in displayCurses)
         {
             if (displayCurse != _trueCurseText)
