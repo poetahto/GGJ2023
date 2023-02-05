@@ -55,7 +55,7 @@ public class Plant : MonoBehaviour
 
         currentHeartCount = heartStems.Length;
 
-        waitTime = 5;
+        waitTime = 15;
     }
 
     private void OnEnable()
