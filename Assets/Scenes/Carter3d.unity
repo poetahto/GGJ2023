@@ -979,6 +979,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionManager
       objectReference: {fileID: 0}
+    - target: {fileID: 842323177395217980, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: selectionMusic.Path
+      value: event:/Selection Music_Looping
+      objectReference: {fileID: 0}
+    - target: {fileID: 842323177395217980, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: selectionMusic.Guid.Data1
+      value: -1081408916
+      objectReference: {fileID: 0}
+    - target: {fileID: 842323177395217980, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: selectionMusic.Guid.Data2
+      value: 1147323757
+      objectReference: {fileID: 0}
+    - target: {fileID: 842323177395217980, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: selectionMusic.Guid.Data3
+      value: -1006878040
+      objectReference: {fileID: 0}
+    - target: {fileID: 842323177395217980, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: selectionMusic.Guid.Data4
+      value: 384122020
+      objectReference: {fileID: 0}
     - target: {fileID: 842323177395217982, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
       propertyPath: m_RootOrder
       value: 5

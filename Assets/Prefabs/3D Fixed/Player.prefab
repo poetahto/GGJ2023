@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 1859079871}
   - component: {fileID: 1645052078}
   - component: {fileID: 1645052079}
+  - component: {fileID: 1645052075}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -607,6 +608,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2567a905df2e4547806204bb67bc8f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1645052075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384251712653046824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887ecebe355c4718b73f44a6faa339af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepEvent:
+    Guid:
+      Data1: -590001428
+      Data2: 1136800199
+      Data3: -1390308187
+      Data4: -436658754
+    Path: event:/Player Footsteps
+  stepDistance: 0.5
 --- !u!1 &6384251713270343230
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using DefaultNamespace;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
+
 public class TransitionManager : MonoBehaviour
 {
     public static TransitionManager instance;
@@ -14,8 +19,12 @@ public class TransitionManager : MonoBehaviour
     public GameObject player;
     public bool combatRoom = false;
     public bool encounterComplete;
+
+    public EventReference selectionMusic;
     // Start is called before the first frame update
 
+    private EventInstance _selectionMusic;
+    
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void Init()
     {
@@ -34,17 +43,12 @@ public class TransitionManager : MonoBehaviour
             StartCoroutine(fade(Color.black, Color.clear));
             StartCoroutine(StartNextEncounter());
             DontDestroyOnLoad(gameObject);
+            _selectionMusic = RuntimeManager.CreateInstance(selectionMusic);
         }
         else
         {
             Destroy(gameObject);
         }
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 
@@ -107,9 +111,11 @@ public class TransitionManager : MonoBehaviour
             CombatManager.instance.Cleanup();
             ChoiceManager.instance.SpawnNewPickups();
             combatRoom = !combatRoom;
+            _selectionMusic.start();
         }
         else
         {
+            _selectionMusic.stop(STOP_MODE.ALLOWFADEOUT);
             CombatManager.instance.StartCombatEncounter();
             combatRoom = !combatRoom;
         }

@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
+using FMODUnity;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class Plant : MonoBehaviour
 {
@@ -23,17 +26,27 @@ public class Plant : MonoBehaviour
     public Transform[] hearts;
     private int currentHeartCount;
     public AnimationCurve heartBeat;
+    public EventReference movementLoop;
+    public float movementLoopVolumeSmoothing = 5f;
 
+    private float _targetVolume = 0;
+    
     public enum State
     {
         moveToTarget,
         wait,
     }
 
+    private EventInstance _movementLoop;
+
     void Start()
     {
+        _movementLoop = RuntimeManager.CreateInstance(movementLoop);
+        _movementLoop.start();
+        _movementLoop.setVolume(0);
         positionTarget = transform.Find("Position Target").transform;
         positionTarget.parent = null;
+        DontDestroyOnLoad(positionTarget);
         startPosition = transform.position;
 
         currentHeartCount = heartStems.Length;
@@ -50,6 +63,8 @@ public class Plant : MonoBehaviour
     private void OnDisable()
     {
         GetComponent<Health>().onDamage.RemoveListener(DropHeart);
+        _movementLoop.setVolume(0);
+        _targetVolume = 0;
     }
 
     private void Update()
@@ -60,9 +75,14 @@ public class Plant : MonoBehaviour
             hearts[i].localScale = new Vector3(scale, scale, 1);
         }
         
+        _movementLoop.getPlaybackState(out var pbs);
+        
         switch (currentState)
         {
             case State.moveToTarget:
+
+                _targetVolume = Mathf.Lerp(_targetVolume, 1, movementLoopVolumeSmoothing * Time.deltaTime);
+
                 transform.position = Vector3.SmoothDamp(transform.position, positionTarget.position, ref velocity,
                     smoothTime, maxSpeed);
                 AddWiggle();
@@ -75,6 +95,9 @@ public class Plant : MonoBehaviour
 
                 break;
             case State.wait:
+
+                _targetVolume = Mathf.Lerp(_targetVolume, 0, movementLoopVolumeSmoothing * Time.deltaTime);
+                
                 AddWiggle();
                 waitTime -= Time.deltaTime;
 
@@ -88,6 +111,8 @@ public class Plant : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        _movementLoop.setVolume(_targetVolume);
     }
 
     void AddWiggle()

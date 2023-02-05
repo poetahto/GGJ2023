@@ -59,5 +59,6 @@ public class PlayerEffectManager : MonoBehaviour, IResettable
     public void ResetObject()
     {
         RemoveAllEffects();
+        _effects.Clear();
     }
 }
