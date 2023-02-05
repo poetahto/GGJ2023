@@ -1,54 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Effects;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-namespace Effects
+public class DecisionItemFactory : MonoBehaviour
 {
-    public class DecisionItemFactory : MonoBehaviour
+    public DecisionItemView viewPrefab;
+        
+    public readonly List<Effect> PotentialPacts = new List<Effect>()
     {
-        public DecisionItemView viewPrefab;
-        public List<Effect> potentialPacts = new List<Effect>();
-        public List<Effect> potentialCurses = new List<Effect>();
+        new HigherBulletDamage(1),
+        new MaxHealthBoost(1),
+    };
+        
+    public readonly List<Effect> PotentialCurses = new List<Effect>()
+    {
+        new LowFrictionEffect(1),
+        new StandStillDamage(0.5f, 1),
+        new TakeMoreDamage(0.5f),
+    };
 
-        public GameObject Create()
+    public GameObject Create()
+    {
+        Shuffle(PotentialCurses);
+        var result = Instantiate(viewPrefab);
+
+        var pactList = new List<Effect>
         {
-            Shuffle(potentialCurses);
-            var result = Instantiate(viewPrefab);
+            GetRandom(PotentialPacts)
+        };
 
-            var pactList = new List<Effect>
-            {
-                GetRandom(potentialPacts)
-            };
-
-            var curseList = new List<Effect>
-            {
-                potentialCurses[0],
-                potentialCurses[1],
-                potentialCurses[2],
-            };
-            
-            Instantiate(pactList[0], result.transform);
-            Instantiate(curseList[0], result.transform);
-            var trueCurse = curseList[0];
-            Shuffle(curseList);
-            result.UpdateData(pactList[0], trueCurse, curseList);
-            
-            return result.gameObject;
-        }
-
-        public static void Shuffle(List<Effect> list)
+        var curseList = new List<Effect>
         {
-            for (int i = 0; i < list.Count; i++)
+            PotentialCurses[0],
+            PotentialCurses[1],
+            PotentialCurses[2],
+        };
+            
+        var trueCurse = curseList[0];
+        Shuffle(curseList);
+        result.UpdateData(pactList[0], trueCurse, curseList);
+            
+        result.collectable.onCollect.AddListener(data =>
+        {
+            if (data.collector.TryGetComponent(out PlayerEffectManager effectManager))
             {
-                var rand = Random.Range(0, list.Count);
-                (list[i], list[rand]) = (list[rand], list[i]);
+                effectManager.AddEffect(pactList[0]);
+                effectManager.AddEffect(trueCurse);
             }
-        }
+        });
+            
+        return result.gameObject;
+    }
 
-        public static Effect GetRandom(List<Effect> list)
+    public static void Shuffle(List<Effect> list)
+    {
+        for (int i = 0; i < list.Count; i++)
         {
-            return list[Random.Range(0, list.Count)];
+            var rand = Random.Range(0, list.Count);
+            (list[i], list[rand]) = (list[rand], list[i]);
         }
+    }
+
+    public static Effect GetRandom(List<Effect> list)
+    {
+        return list[Random.Range(0, list.Count)];
     }
 }

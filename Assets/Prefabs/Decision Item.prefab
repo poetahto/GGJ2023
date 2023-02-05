@@ -528,7 +528,6 @@ GameObject:
   - component: {fileID: 8413512584020217247}
   - component: {fileID: 2081738556840655247}
   - component: {fileID: 1075644809184958792}
-  - component: {fileID: 7105410312967720664}
   - component: {fileID: -298651420869414069}
   m_Layer: 0
   m_Name: Decision Item
@@ -574,6 +573,7 @@ MonoBehaviour:
   - {fileID: 7323546694811861352}
   - {fileID: 3854885277371706872}
   - {fileID: 4566941129008966877}
+  collectable: {fileID: -298651420869414069}
 --- !u!54 &2081738556840655247
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -603,18 +603,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35428163, y: 0.25802177, z: 0.29469782}
   m_Center: {x: 0, y: 0.10449759, z: 0}
---- !u!114 &7105410312967720664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8413512584020217245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ca7a37f02b4fc4a5055d65816d3e63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-298651420869414069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,18 +618,6 @@ MonoBehaviour:
   onCollect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7105410312967720664}
-        m_TargetAssemblyTypeName: Effects.ChildrenEffects, Assembly-CSharp
-        m_MethodName: ApplyTo
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8413512584020217247}
         m_TargetAssemblyTypeName: Effects.DecisionItemView, Assembly-CSharp
         m_MethodName: CollectAnimation

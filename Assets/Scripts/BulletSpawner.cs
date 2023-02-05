@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BulletModifications;
 using Effects;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,8 +12,10 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private GameObject intialEffects;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] public UnityEvent onShoot;
+    [SerializeField] private LayerMask mask;
+    [SerializeField] private float baseDamage = 1;
 
-    public List<Effect> bulletEffects;
+    public List<BulletModifier> bulletModifiers; 
     public float bulletSpeed;
     public float fireRate;
     public float spread = 10f;
@@ -25,24 +28,29 @@ public class BulletSpawner : MonoBehaviour
 
     private void Awake()
     {
-        foreach (var effect in intialEffects.GetComponents<Effect>())
+        bulletModifiers = new List<BulletModifier>()
         {
-            bulletEffects.Add(effect);
-        }
+            new IgnoreLayer(mask),
+            new DestroyOnCollision(),
+            new ApplyDamageOnCollision(baseDamage)
+        };
     }
 
     private void Update()
     {
-        
         if (IsFiring && _cooldownTime <= 0)
         {
             // todo: pool
             var instance = Instantiate(bulletPrefab);
             if(shaker)
-            shaker.ShootShake();
-            foreach (var effect in bulletEffects)
+                shaker.ShootShake();
+
+            if (instance.TryGetComponent(out BulletModificationManager modificationManager))
             {
-                effect.ApplyTo(instance);
+                foreach (var bulletModifier in bulletModifiers)
+                {
+                    modificationManager.AddModifier(bulletModifier);
+                }
             }
             
             instance.transform.position = spawnLocation.position;

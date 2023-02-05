@@ -1,23 +1,34 @@
-﻿using UnityEngine;
+﻿using BulletModifications;
 
 namespace Effects
 {
     public class HigherBulletDamage : Effect
     {
-        public ApplyDamageOnCollision extraDamageComponent;
+        private readonly ApplyDamageOnCollision _extraDamage;
+        
+        public override string Name => "Wrath";
 
-        public override string GetName() => "Wrath";
+        public override string Description => "Your attacks deal more damage.";
 
-        public override string GetDescription() => "Your attacks deal more damage.";
-
-        public override void ApplyTo(GameObject obj)
+        public HigherBulletDamage(float extraDamage)
         {
-            if (obj.TryGetComponent(out BulletSpawner spawner))
+            _extraDamage = new ApplyDamageOnCollision(extraDamage);
+        }
+        
+        public override void Initialize()
+        {
+            if (Player.TryGetComponent(out BulletSpawner spawner))
             {
-                spawner.bulletEffects.Add(extraDamageComponent);
+                spawner.bulletModifiers.Add(_extraDamage);
             }
         }
 
-        public override void RemoveFrom(GameObject obj) {}
+        public override void Shutdown()
+        {
+            if (Player.TryGetComponent(out BulletSpawner spawner))
+            {
+                spawner.bulletModifiers.Remove(_extraDamage);
+            }
+        }
     }
 }

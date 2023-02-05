@@ -46,6 +46,20 @@ public class TransitionManager : MonoBehaviour
     {
         
     }
+
+    public void HandlePlayerDeath()
+    {
+    }
+
+    private IEnumerator PlayerDeathRestartCoroutine()
+    {
+        yield return fade(Color.clear, Color.white);
+
+        yield return sceneSetup();
+        
+        yield return fade(Color.white, Color.clear);
+    }
+
     public void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Player"))

@@ -566,6 +566,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1838957685446757090, guid: 33f006c1fc25bb041a27122dd631e290, type: 3}
+      propertyPath: mask.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 6384251712653046816, guid: 33f006c1fc25bb041a27122dd631e290, type: 3}
       propertyPath: indicatorOffset.y
       value: 0.3
@@ -980,6 +984,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644220753}
   m_CullTransparentMesh: 1
+--- !u!1 &1645052068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6384251712653046824, guid: 33f006c1fc25bb041a27122dd631e290, type: 3}
+  m_PrefabInstance: {fileID: 584703068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1645052078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645052068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bae74bfdda043f6b910b105b24e1795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1645052068}
 --- !u!1001 &1646539696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1476,13 +1498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewPrefab: {fileID: 8413512584020217247, guid: c23be3f4e18bd0848b98c7b97149c03b, type: 3}
-  potentialPacts:
-  - {fileID: 7364532822107375969, guid: dad0301095a7bd445b7d1cf112346e65, type: 3}
-  - {fileID: 8714084893450727318, guid: 508a831dc1ed29147b5b00874a6242b9, type: 3}
-  potentialCurses:
-  - {fileID: 8187195096529252683, guid: bff4a7f5a37f9d74ab1dc0c132432eac, type: 3}
-  - {fileID: 3418849731610159422, guid: 22da55b6fe3b1c44a8f070fb0053d1c9, type: 3}
-  - {fileID: 7725467538611015608, guid: 619b654dd270db34a83b299529a4af92, type: 3}
 --- !u!4 &1983245525
 Transform:
   m_ObjectHideFlags: 0

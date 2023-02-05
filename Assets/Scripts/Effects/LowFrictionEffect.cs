@@ -1,28 +1,31 @@
-﻿using UnityEngine;
-
-namespace Effects
+﻿namespace Effects
 {
     public class LowFrictionEffect : Effect
     {
-        public float amount;
+        private readonly float _amount;
         
-        public override string GetName() => "Sever";
+        public override string Name => "Sever";
 
-        public override string GetDescription() => "You have less friction with the ground.";
+        public override string Description => "You have less friction with the ground.";
 
-        public override void ApplyTo(GameObject obj)
+        public LowFrictionEffect(float amount)
         {
-            if (obj.TryGetComponent(out PlayerMovement movement))
+            _amount = amount;
+        }
+        
+        public override void Initialize()
+        {
+            if (Player.TryGetComponent(out PlayerMovement movement))
             {
-                movement.decelerationAmount += amount;
+                movement.decelerationAmount += _amount;
             }
         }
 
-        public override void RemoveFrom(GameObject obj)
+        public override void Shutdown()
         {
-            if (obj.TryGetComponent(out PlayerMovement movement))
+            if (Player.TryGetComponent(out PlayerMovement movement))
             {
-                movement.decelerationAmount -= amount;
+                movement.decelerationAmount -= _amount;
             }
         }
     }

@@ -53,7 +53,7 @@ public class ScreenShaker : MonoBehaviour
         yield return new WaitForSeconds(shootshakeDuration);
         cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0;
     }
-    void hitShake(float amount)
+    void hitShake(HealthDamageEvent data)
     {
 
         StopCoroutine(HitShake());

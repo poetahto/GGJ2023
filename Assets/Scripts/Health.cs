@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+public class HealthDamageEvent
+{
+    public Health Health;
+    public float Damage;
+}
+
 public class Health : MonoBehaviour
 {
     [SerializeField] private float value = 1;
@@ -8,13 +14,13 @@ public class Health : MonoBehaviour
     [SerializeField] private bool destroyOnDeath;
 
     public UnityEvent onDeath;
-    public UnityEvent<float> onDamage;
+    public UnityEvent<HealthDamageEvent> onDamage;
     public UnityEvent<float> onHeal;
 
     public void Damage(float amount)
     {
         value -= amount;
-        onDamage.Invoke(amount);
+        onDamage.Invoke(new HealthDamageEvent{Damage = amount, Health = this});
 
         if (value <= 0)
         {

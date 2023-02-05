@@ -103,7 +103,7 @@ public class Plant : MonoBehaviour
     }
 
     [EasyButtons.Button]
-    public void DropHeart(float damage)
+    public void DropHeart(HealthDamageEvent data)
     {
         if (currentHeartCount <= 0) return;
         currentHeartCount--;

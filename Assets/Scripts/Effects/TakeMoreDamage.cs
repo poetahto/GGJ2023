@@ -1,26 +1,37 @@
-﻿using UnityEngine;
-
-namespace Effects
+﻿namespace Effects
 {
     public class TakeMoreDamage : Effect
     {
-        public float extraDamageAmount = 0.5f;
+        private readonly float _extraDamageAmount = 0.5f;
 
-        public override string GetName() => "Decrepit";
+        public override string Name => "Decrepit";
 
-        public override string GetDescription() => "You receive more damage.";
+        public override string Description => "You receive more damage.";
 
-        public override void ApplyTo(GameObject obj)
+        public TakeMoreDamage(float extraDamage)
         {
-            if (obj.TryGetComponent(out Health health))
+            _extraDamageAmount = extraDamage;
+        }
+        
+        public override void Initialize()
+        {
+            if (Player.TryGetComponent(out Health health))
             {
-                health.onDamage.AddListener(_ =>
-                {
-                    health.SetHealth(health.CurrentHealth - extraDamageAmount);
-                });
+                health.onDamage.AddListener(ApplyExtraDamage);
             }
         }
 
-        public override void RemoveFrom(GameObject obj) {}
+        public override void Shutdown()
+        {
+            if (Player.TryGetComponent(out Health health))
+            {
+                health.onDamage.RemoveListener(ApplyExtraDamage);
+            }
+        }
+
+        private void ApplyExtraDamage(HealthDamageEvent data)
+        {
+            data.Health.SetHealth(data.Health.CurrentHealth - _extraDamageAmount);
+        }
     }
 }

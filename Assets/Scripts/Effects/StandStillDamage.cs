@@ -4,26 +4,43 @@ namespace Effects
 {
     public class StandStillDamage : Effect
     {
-        public float minSpeed = 0.1f;
-        public float damagePerSecond = 1;
+        private readonly float _minSpeed;
+        private readonly float _damagePerSecond;
+        private float _damageCooldown;
+        private Rigidbody _rigidbody;
+        private Health _health;
 
-        public override string GetName() => "Abhor";
+        public override string Name => "Abhor";
 
-        public override string GetDescription() => "Standing still deals damage.";
+        public override string Description => "Standing still deals damage.";
 
-        public override void ApplyTo(GameObject obj)
+        public StandStillDamage(float minSpeed, float damagePerSecond)
         {
-            var applier = obj.AddComponent<StandStillDamageApplier>();
-            applier.MinSpeed = minSpeed;
-            applier.DamagePerSecond = damagePerSecond;
+            _minSpeed = minSpeed;
+            _damagePerSecond = damagePerSecond;
+        }
+        
+        public override void Initialize()
+        {
+            _health = Player.GetComponent<Health>();
+            _rigidbody = Player.GetComponent<Rigidbody>();
         }
 
-        public override void RemoveFrom(GameObject obj)
+        public override void Update()
         {
-            if (obj.TryGetComponent(out StandStillDamageApplier applier))
+            if (_rigidbody.velocity.sqrMagnitude < _minSpeed * _minSpeed)
             {
-                Destroy(applier);
+                if (_damageCooldown <= 0)
+                {
+                    _health.Damage(1);
+                    _damageCooldown = 1 / _damagePerSecond;
+                }
+                else _damageCooldown -= Time.deltaTime;
             }
+        }
+
+        public override void Shutdown()
+        {
         }
     }
 }
