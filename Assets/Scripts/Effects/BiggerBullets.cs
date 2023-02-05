@@ -2,23 +2,23 @@
 
 namespace Effects
 {
-    public class HealOnHit : Effect
+    public class BiggerBullets : Effect
     {
-        public override string Name        => "Thirst";
-        public override string Description => "Restore health when dealing damage to enemies.";
+        public override string Name        => "Impose";
+        public override string Description => "Increase bullet size.";
 
         private readonly float _amount;
-        private VampiricModifier _modifier;
+        private ScaleOnSpawn _modifier;
         
-        public HealOnHit(float amount)
+        public BiggerBullets(float amount)
         {
             _amount = amount;
         }
         
         public override void Initialize()
         {
-            _modifier ??= new VampiricModifier(Player.GetComponent<Health>(), _amount);
-
+            _modifier ??= new ScaleOnSpawn(_amount);
+            
             if (Player.TryGetComponent(out BulletSpawner spawner))
             {
                 spawner.bulletModifiers.Add(_modifier);

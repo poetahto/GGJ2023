@@ -12,7 +12,9 @@ public class DecisionItemFactory : MonoBehaviour
         // new MaxHealthBoost(1),
         // new IncreaseBulletSpeed(1),
         // new IncreaseFireRate(1),
-        new HealOnHit(0.25f),
+        // new HealOnHit(0.25f),
+        // new BiggerBullets(0.25f),
+        new PiercingEffect(),
     };
         
     public readonly List<Effect> PotentialCurses = new List<Effect>()

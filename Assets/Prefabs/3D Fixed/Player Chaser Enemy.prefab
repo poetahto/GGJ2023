@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0079c4ff89af4f15b71192d364688a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2933172759479166959, guid: 6ce259f1a05b76a408ee52ed43ec71a9, type: 3}
+  bulletPrefab: {fileID: 2933172759479166959, guid: 271f83ae1685bd04893e53b634f00650, type: 3}
   spawnLocation: {fileID: 1810010330034683586}
   onShoot:
     m_PersistentCalls:

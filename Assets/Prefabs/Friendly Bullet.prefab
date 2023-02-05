@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1978749520831004507}
   - component: {fileID: 7265518515152803124}
   - component: {fileID: 7495279337989214052}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 3640393405807772281}
   - component: {fileID: 8384385417082646676}
   - component: {fileID: -788290725426634790}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Friendly Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2933172760577547853}
   - component: {fileID: 2933172760577547854}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
