@@ -1339,6 +1339,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1448598531427209542, guid: b005849f0ba276e4f9894837943b3b77, type: 3}
+      propertyPath: sporePrefab
+      value: 
+      objectReference: {fileID: 487827392257498233, guid: 68c1cde429fd9d24ebbef303b58e19b0, type: 3}
     - target: {fileID: 1448598531427209543, guid: b005849f0ba276e4f9894837943b3b77, type: 3}
       propertyPath: m_Name
       value: CombatManager
