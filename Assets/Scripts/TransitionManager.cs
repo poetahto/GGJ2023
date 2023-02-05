@@ -75,8 +75,11 @@ public class TransitionManager : MonoBehaviour
         floorCount = 0;
         FloorDisplay.text = "Floor " + floorCount.ToString();
         player.gameObject.SetActive(true);
-        
-        yield return sceneSetup();
+
+        SceneManager.LoadScene("PickupRoom");
+        floorCount++;
+        FloorDisplay.text = "Floor " + floorCount.ToString();
+        StartCoroutine(StartNextEncounter());
         yield return fade(Color.white, Color.clear);
     }
 
@@ -99,10 +102,14 @@ public class TransitionManager : MonoBehaviour
     IEnumerator sceneSetup()
     {
         yield return new WaitForSeconds(fadeTime);
-        print("new floor");
         floorCount++;
         FloorDisplay.text = "Floor " + floorCount.ToString();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if(combatRoom)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-  1);
+        }
         StartCoroutine(fade(Color.black,Color.clear));
         StartCoroutine(StartNextEncounter());
     }
