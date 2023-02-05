@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Collectables;
+using Effects;
 using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class ChoiceManager : MonoBehaviour
     public List<Transform> SpawnOptions;
     public int optionCount;
     public List<GameObject> choices;
+    public DecisionItemFactory itemFactory;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,11 +39,13 @@ public class ChoiceManager : MonoBehaviour
     {
        for(int i = 0; i < optionCount; i++)
         {
-            int RandomIndex = Random.Range(0, PickupOptions.Count);
-            GameObject randomlySelectedPickupPrefab = PickupOptions[RandomIndex];
-            selectedOptions.Add(randomlySelectedPickupPrefab);
-            PickupOptions.Remove(randomlySelectedPickupPrefab);
-            GameObject pickupInstance = Instantiate(randomlySelectedPickupPrefab, SpawnOptions[i].position,Quaternion.identity);
+            // int RandomIndex = Random.Range(0, PickupOptions.Count);
+            // GameObject randomlySelectedPickupPrefab = PickupOptions[RandomIndex];
+            var pickupInstance = itemFactory.Create();
+            selectedOptions.Add(pickupInstance);
+            PickupOptions.Remove(pickupInstance);
+            // GameObject pickupInstance = Instantiate(randomlySelectedPickupPrefab, SpawnOptions[i].position,Quaternion.identity);
+            pickupInstance.transform.SetPositionAndRotation(SpawnOptions[i].position, Quaternion.identity);
             DontDestroyOnLoad(pickupInstance);
 
             choices.Add(pickupInstance);
@@ -54,14 +58,15 @@ public class ChoiceManager : MonoBehaviour
         }
         selectedOptions.Clear();
     }
-    void ConcludeChoice(GameObject g)
+    void ConcludeChoice(ItemCollectEvent data)
     {
         print("concluding choice");
         foreach(GameObject choice in choices)
         {
             choice.GetComponent<Collectable>().onCollect.RemoveListener(ConcludeChoice);
-            if (g!=choice)
-            Destroy(choice);
+            
+            if (data.item!=choice)
+                Destroy(choice);
         }
         choices.Clear();
         TransitionManager.instance.encounterComplete = true;

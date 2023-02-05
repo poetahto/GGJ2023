@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73dd626afeb64f9495d3a8ff3d242283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayTime: 3
   displayPact: {fileID: 8413512583779789996}
   displayCurses:
   - {fileID: 7323546694811861352}
