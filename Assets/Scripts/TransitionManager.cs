@@ -38,7 +38,7 @@ public class TransitionManager : MonoBehaviour
     {
         
     }
-    public void OnTriggerEnter2D(Collider2D col)
+    public void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Player"))
         {
