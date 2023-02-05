@@ -551,6 +551,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   baseDamage: 1
+  collisionParticles: {fileID: 8861380787337691859, guid: bd2bcfa9d643f9a48a5aa7d5f2ff4352, type: 3}
   bulletSpeed: 1
   fireRate: 1
   spread: 0
@@ -596,6 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6384251712653046824}
+  showDebug: 0
 --- !u!114 &1645052079
 MonoBehaviour:
   m_ObjectHideFlags: 0

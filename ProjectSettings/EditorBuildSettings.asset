@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Carter3d.unity
+    guid: 4593b9652659db34bb6d175d4257fc4b
+  - enabled: 1
     path: Assets/Scenes/Kain.unity
     guid: 9bbc50aaf82891c44a4992f94f0b66b6
   m_configObjects: {}
