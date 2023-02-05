@@ -124,7 +124,7 @@ public class CombatManager : MonoBehaviour
             checkedSpawnPositions.Add(t);
             enemySpawnPositions.Remove(t);
             RaycastHit hit;
-            if (Physics.SphereCast(potentialSpawnPos, spawnCheckRadius,Vector3.down, out hit, 1,enemyBlockers))
+            if (Physics.OverlapSphere(potentialSpawnPos, spawnCheckRadius, enemyBlockers).Length != 0)
             {
                 print("spawn blocked");
             }

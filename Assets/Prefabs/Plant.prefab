@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 4998163175341096882}
   - component: {fileID: 2405972221652427049}
   - component: {fileID: 1357520707775308857}
+  - component: {fileID: 468499704149481290}
   m_Layer: 8
   m_Name: Plant
   m_TagString: Plant
@@ -518,6 +519,20 @@ MonoBehaviour:
   onHeal:
     m_PersistentCalls:
       m_Calls: []
+--- !u!136 &468499704149481290
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700216767716136513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.22
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.48, z: 0}
 --- !u!1001 &8519827318143279157
 PrefabInstance:
   m_ObjectHideFlags: 0
