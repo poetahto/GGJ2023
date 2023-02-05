@@ -12,6 +12,11 @@ namespace BulletModifications
             _mask = mask;
         }
 
+        public override BulletModifier Copy()
+        {
+            return new IgnoreLayer(_mask);
+        }
+
         public override void Initialize()
         {
             if (Bullet.TryGetComponent(out Collider col))

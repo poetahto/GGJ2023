@@ -530,7 +530,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2933172759479166959, guid: 6ce259f1a05b76a408ee52ed43ec71a9, type: 3}
-  intialEffects: {fileID: 0}
   spawnLocation: {fileID: 6384251714258493515}
   onShoot:
     m_PersistentCalls:
@@ -551,6 +550,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   baseDamage: 1
+  collisionParticles: {fileID: 8861380787337691859, guid: bd2bcfa9d643f9a48a5aa7d5f2ff4352, type: 3}
   bulletSpeed: 2
   fireRate: 1.5
   spread: 0
