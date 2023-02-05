@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BulletModifications;
-using Effects;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -11,11 +8,11 @@ public class BulletSpawner : MonoBehaviour
 {
     // todo: all of these need to be able to change for powerup reasons
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private GameObject intialEffects;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] public UnityEvent onShoot;
     [SerializeField] private LayerMask mask;
     [SerializeField] private float baseDamage = 1;
+    [SerializeField] private GameObject collisionParticles;
 
     public List<BulletModifier> bulletModifiers; 
     public float bulletSpeed;
@@ -34,7 +31,8 @@ public class BulletSpawner : MonoBehaviour
         {
             new IgnoreLayer(mask),
             new DestroyOnCollision(),
-            new ApplyDamageOnCollision(baseDamage)
+            new ApplyDamageOnCollision(baseDamage),
+            new CollisionParticleEffect(collisionParticles),
         };
     }
 
@@ -51,7 +49,7 @@ public class BulletSpawner : MonoBehaviour
             {
                 foreach (var bulletModifier in bulletModifiers)
                 {
-                    modificationManager.AddModifier(bulletModifier);
+                    modificationManager.AddModifier(bulletModifier.Copy());
                 }
             }
             

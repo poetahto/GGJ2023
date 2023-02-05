@@ -10,7 +10,12 @@ namespace BulletModifications
         {
             _amount = amount;
         }
-        
+
+        public override BulletModifier Copy()
+        {
+            return new ApplyDamageOnCollision(_amount);
+        }
+
         public override void OnHit(Collider col)
         {
             if (col.TryGetComponent(out Health health))
