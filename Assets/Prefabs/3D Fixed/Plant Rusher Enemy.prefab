@@ -168,8 +168,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   deathDamage: 1
-  chaseSpeed: 0.5
-  selfDestructRange: 0.1
+  chaseSpeed: 2
+  selfDestructRange: 1
   spawnDelay: 2
   spawnDistance: 0.2
   spawning: 1

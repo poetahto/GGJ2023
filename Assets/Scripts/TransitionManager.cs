@@ -77,6 +77,10 @@ public class TransitionManager : MonoBehaviour
         combatRoom = false;
         encounterComplete = true;
         floorCount = 0;
+        foreach (Rune rune in FindObjectsOfType<Rune>())
+        {
+            Destroy(rune.gameObject);
+        }
         FloorDisplay.text = "Floor " + floorCount.ToString();
         player.gameObject.SetActive(true);
         ChangeDeathQuoteText();

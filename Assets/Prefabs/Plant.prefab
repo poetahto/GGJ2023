@@ -485,7 +485,7 @@ MonoBehaviour:
     Path: event:/Plant Movement looping
   movementLoopVolumeSmoothing: 5
   chainGrowers: []
-  firstWaitTime: 6
+  firstWaitTime: 3
 --- !u!114 &1357520707775308857
 MonoBehaviour:
   m_ObjectHideFlags: 0
