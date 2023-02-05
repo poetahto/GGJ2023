@@ -124,7 +124,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: 129d49da69fe58f429711e2ccf61930f, type: 3}
       propertyPath: m_Name
-      value: GJ_2023_Mole
+      value: GJ_2023_Mole Variant
       objectReference: {fileID: 0}
     - target: {fileID: -8612450709644022062, guid: 129d49da69fe58f429711e2ccf61930f, type: 3}
       propertyPath: m_CastShadows
@@ -391,6 +391,22 @@ MonoBehaviour:
     amplitude: 20
     interval: 0
     offset: 1
+--- !u!1 &1037773132239640076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5469630625313984962, guid: 129d49da69fe58f429711e2ccf61930f, type: 3}
+  m_PrefabInstance: {fileID: 4211180965224609842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &7176367160364028807
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037773132239640076}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1423545368095985348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3004019969263073014, guid: 129d49da69fe58f429711e2ccf61930f, type: 3}
