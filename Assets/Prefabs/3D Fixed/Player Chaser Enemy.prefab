@@ -245,6 +245,9 @@ MonoBehaviour:
   chaseSpeed: 1
   firingSpeed: 0.5
   attackRange: 8
+  spawnDelay: 2
+  spawnDistance: 0.2
+  spawning: 1
 --- !u!1 &5981146513227011857
 GameObject:
   m_ObjectHideFlags: 0
