@@ -446,7 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decelerationAmount: 5
   groundedMovement:
-    speed: 1
+    speed: 2
     acceleration: 5
     deceleration: 5
     reverseMultiplier: 1
@@ -551,8 +551,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   baseDamage: 1
-  bulletSpeed: 1
-  fireRate: 1
+  bulletSpeed: 2
+  fireRate: 1.5
   spread: 0
   shaker: {fileID: 0}
 --- !u!114 &2020661123973391977
@@ -596,6 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6384251712653046824}
+  showDebug: 0
 --- !u!114 &1645052079
 MonoBehaviour:
   m_ObjectHideFlags: 0
