@@ -6,16 +6,19 @@ using UnityEngine;
 public class ChoiceManager : MonoBehaviour
 {
     public static ChoiceManager instance;
+
     public List<GameObject> PickupOptions;
     public List<GameObject> selectedOptions;
     public List<Transform> SpawnOptions;
     public int optionCount;
     public List<GameObject> choices;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
+            choices = new List<GameObject>();
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -25,7 +28,6 @@ public class ChoiceManager : MonoBehaviour
         }
 
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -41,6 +43,7 @@ public class ChoiceManager : MonoBehaviour
             PickupOptions.Remove(randomlySelectedPickupPrefab);
             GameObject pickupInstance = Instantiate(randomlySelectedPickupPrefab, SpawnOptions[i].position,Quaternion.identity);
             DontDestroyOnLoad(pickupInstance);
+
             choices.Add(pickupInstance);
             print(pickupInstance.name);
             pickupInstance.GetComponent<Collectable>().onCollect.AddListener(ConcludeChoice);
