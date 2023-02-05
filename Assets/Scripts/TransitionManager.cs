@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -49,14 +50,26 @@ public class TransitionManager : MonoBehaviour
 
     public void HandlePlayerDeath()
     {
+        StartCoroutine(PlayerDeathRestartCoroutine());
     }
 
     private IEnumerator PlayerDeathRestartCoroutine()
     {
         yield return fade(Color.clear, Color.white);
 
-        yield return sceneSetup();
+        CombatManager.instance.killAllEnemies();
+        CombatManager.instance.StopAllCoroutines();
+        CombatManager.instance.Cleanup();
+        // combatRoom = false;
         
+        foreach (var resettable in player.GetComponents<IResettable>())
+        {
+            resettable.ResetObject();
+        }
+        
+        player.gameObject.SetActive(true);
+        
+        yield return sceneSetup();
         yield return fade(Color.white, Color.clear);
     }
 

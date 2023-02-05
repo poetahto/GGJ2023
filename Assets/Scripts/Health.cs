@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class HealthDamageEvent
@@ -7,7 +8,7 @@ public class HealthDamageEvent
     public float Damage;
 }
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IResettable
 {
     [SerializeField] private float value = 1;
     [SerializeField] private float maxHealth = 1;
@@ -51,5 +52,10 @@ public class Health : MonoBehaviour
     {
         get => maxHealth;
         set => maxHealth = value;
+    }
+
+    public void ResetObject()
+    {
+        value = MaxHealth;
     }
 }

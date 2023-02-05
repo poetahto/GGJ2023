@@ -125,7 +125,7 @@ public class CombatManager : MonoBehaviour
         else
             enemies.Add(Instantiate(plantHunterPrefab, spawnPos, Quaternion.identity));
     }
-    void killAllEnemies()
+    public void killAllEnemies()
     {
         foreach(GameObject enemy in enemies)
         {   

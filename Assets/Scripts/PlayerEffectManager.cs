@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
-public class PlayerEffectManager : MonoBehaviour
+public class PlayerEffectManager : MonoBehaviour, IResettable
 {
     [SerializeField] private GameObject player;
 
@@ -47,5 +48,10 @@ public class PlayerEffectManager : MonoBehaviour
         
         if (GUILayout.Button("Remove all"))
             RemoveAllEffects();
+    }
+
+    public void ResetObject()
+    {
+        RemoveAllEffects();
     }
 }
