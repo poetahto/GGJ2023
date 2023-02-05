@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Collectables;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -49,7 +50,7 @@ public class Rune : MonoBehaviour
         orbitRadius = Random.Range(0.5f, 0.8f);
         orbitSpeed = Random.Range(1f, 3f);
         orbitOffset = Random.Range(0f, Mathf.PI * 2f);
-        orbitHeight = Random.Range(-0.1f, 0.1f);
+        orbitHeight = Random.Range(0.3f, 0.6f);
         orbitSinAmplitude = Random.Range(0.0f, 0.1f);
         orbitSinSpeed = Random.Range(0.5f, 10f);
         orbitSinOffset = Random.Range(0f, Mathf.PI * 2f);
@@ -78,6 +79,12 @@ public class Rune : MonoBehaviour
     {
         orbitAround = t;
         transform.parent = t;
+    }
+    
+    public void AttachRune(ItemCollectEvent e)
+    {
+        orbitAround = e.collector.transform;
+        transform.parent = e.collector.transform;
     }
 
     public void SetRuneIndex(int index)

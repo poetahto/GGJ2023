@@ -154,7 +154,8 @@ MonoBehaviour:
   orbitSinAmplitude: 0
   orbitSinSpeed: 0
   orbitSinOffset: 0
-  orbitAround: {fileID: 0}
+  attachSpeed: 15
+  attachSmoothTime: 1
 --- !u!210 &361675186173617663
 SortingGroup:
   m_ObjectHideFlags: 0
