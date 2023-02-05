@@ -5,6 +5,7 @@ using FMOD.Studio;
 using FMODUnity;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -179,7 +180,11 @@ public class Plant : MonoBehaviour
         {
             chainGrow.growing = true;
         }
+        onGrow.Invoke();
     }
+    
+    public UnityEvent onGrow;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
