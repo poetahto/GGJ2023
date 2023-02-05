@@ -38,9 +38,9 @@ public class Plant : MonoBehaviour
     public enum State
     {
         beforePlant,
+        waitStill,
         moveToTarget,
         wait,
-        waitStill,
     }
 
     private EventInstance _movementLoop;
