@@ -19,6 +19,7 @@ public class ScreenShaker : MonoBehaviour
     }
     private void OnDisable()
     {
+        if(playerHealth)
         playerHealth.onDamage.RemoveListener(hitShake);
     }
     // Update is called once per frame
