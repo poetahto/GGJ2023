@@ -19,7 +19,8 @@ public class TransitionManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            player = Instantiate(player);
+            player = FindObjectOfType<PlayerMovement>().gameObject;
+            
             player.transform.position=PlayerSpawnPoint.position;
             DontDestroyOnLoad(player);
             StartCoroutine(fade(Color.black, Color.clear));

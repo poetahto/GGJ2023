@@ -18,6 +18,9 @@ public class Plant : MonoBehaviour
     private Vector3 startPosition;
     public float wanderRadius;
 
+    public Transform[] hearts;
+    private int currentHeartCount;
+
     public enum State
     {
         moveToTarget,
@@ -30,8 +33,20 @@ public class Plant : MonoBehaviour
         positionTarget.parent = null;
         startPosition = transform.position;
 
+        currentHeartCount = hearts.Length;
+
         waitTime = 1;
         currentState = State.wait;
+    }
+
+    private void OnEnable()
+    {
+        GetComponent<Health>().onDamage.AddListener(DropHeart);
+    }
+
+    private void OnDisable()
+    {
+        GetComponent<Health>().onDamage.RemoveListener(DropHeart);
     }
 
     private void Update()
@@ -70,19 +85,32 @@ public class Plant : MonoBehaviour
     {
         Vector3 randomMovement = new Vector3(
             (Mathf.PerlinNoise(Time.time * wiggleFrequency, 0) * 2) - 1,
-            (Mathf.PerlinNoise(0, Time.time * wiggleFrequency) * 2) - 1,
-            0);
+            0,
+            (Mathf.PerlinNoise(0, Time.time * wiggleFrequency) * 2) - 1);
         transform.position += randomMovement * (Time.deltaTime * wiggleAmplitude);
     }
 
     void NewTargetLocation()
     {
-        positionTarget.position = startPosition + ((Vector3) Random.insideUnitCircle * wanderRadius);
+        Vector2 circle = Random.insideUnitCircle;
+        positionTarget.position = startPosition + (new Vector3(circle.x, 0, circle.y) * wanderRadius);
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(startPosition, wanderRadius);
+    }
+
+    [EasyButtons.Button]
+    public void DropHeart(float damage)
+    {
+        if (currentHeartCount <= 0) return;
+        currentHeartCount--;
+        Transform heart = hearts[currentHeartCount];
+        heart.parent = null;
+        var rb = heart.gameObject.AddComponent<Rigidbody>();
+        rb.drag = 0.5f;
+        heart.gameObject.GetComponent<DeadHeart>().startDeath = true;
     }
 }
