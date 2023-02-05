@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager instance;
@@ -20,6 +20,7 @@ public class CombatManager : MonoBehaviour
     bool spawning = false;
     public float spawnCheckRadius;
     public LayerMask enemyBlockers;
+    public Slider timer;
     // Start is called before the first frame update
     void Awake()
     {
@@ -56,12 +57,21 @@ public class CombatManager : MonoBehaviour
     }
     IEnumerator combatDuration()
     {
+        timer.value = 0;
+        timer.gameObject.SetActive(true);
         spawning = true;
         StartCoroutine(SpawnEnemies());
-        yield return new WaitForSeconds(duration);
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            float normalizedTime = t / duration;
+            //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
+            timer.value = normalizedTime;
+            yield return null;
+        }
         print("ending combat encounter");
         TransitionManager.instance.encounterComplete = true;
         StopCoroutine(SpawnEnemies());
+        timer.gameObject.SetActive(false);
         killAllEnemies();
         spawning = false;
     }
