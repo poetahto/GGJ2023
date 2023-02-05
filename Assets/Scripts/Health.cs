@@ -34,6 +34,11 @@ public class Health : MonoBehaviour
         onHeal.Invoke(healthChange);
     }
 
+    public void SetHealth(float newValue)
+    {
+        value = newValue;
+    }
+
     public float CurrentHealth => value;
     
     public float MaxHealth

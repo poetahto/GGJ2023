@@ -14,7 +14,7 @@ public class TransitionManager : MonoBehaviour
     public bool combatRoom = false;
     public bool encounterComplete;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -23,7 +23,7 @@ public class TransitionManager : MonoBehaviour
             player.transform.position=PlayerSpawnPoint.position;
             DontDestroyOnLoad(player);
             StartCoroutine(fade(Color.black, Color.clear));
-            StartNextEncounter();
+            StartCoroutine(StartNextEncounter());
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -59,10 +59,12 @@ public class TransitionManager : MonoBehaviour
         yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         StartCoroutine(fade(Color.black,Color.clear));
-        StartNextEncounter();
+        StartCoroutine(StartNextEncounter());
     }
-    void StartNextEncounter()
+    IEnumerator StartNextEncounter()
     {
+        yield return new WaitForSeconds(0.01f);
+        print(ChoiceManager.instance);
         loading = false;
         player.transform.position = PlayerSpawnPoint.position;
         if (!combatRoom)

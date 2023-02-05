@@ -8,6 +8,7 @@ public class BulletSpawner : MonoBehaviour
     // todo: all of these need to be able to change for powerup reasons
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject intialEffects;
+    [SerializeField] private Transform spawnLocation;
 
     public List<Effect> bulletEffects;
     public float bulletSpeed;
@@ -39,7 +40,7 @@ public class BulletSpawner : MonoBehaviour
                 effect.ApplyTo(instance);
             }
             
-            instance.transform.position = transform.position;
+            instance.transform.position = spawnLocation.position;
             _cooldownTime = 1 / fireRate;
 
             if (instance.TryGetComponent(out Rigidbody rb))
