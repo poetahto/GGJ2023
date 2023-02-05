@@ -13,6 +13,8 @@ public class CombatManager : MonoBehaviour
     public GameObject playerHunterPrefab;
     public List<GameObject> enemies;
     public float waveInterval;
+    public int maxEnemiesPerWave;
+    public int maxEnemyCount;
     [Range(0,1)]
     public float PlayerHunterRatio;
     public List<Transform> enemySpawnPositions;
@@ -87,13 +89,31 @@ public class CombatManager : MonoBehaviour
         while (spawning)
         {
             yield return new WaitForSeconds(waveInterval);
-            SpawnEnemy();
+            for (int i = 0; i < maxEnemiesPerWave;i++) {
+                SpawnEnemy();
+            }
         }
+    }
+    float getLivingEnemyCount()
+    {
+        int total = 0;
+        foreach(GameObject enemy in enemies)
+        {
+            if (enemy&&enemy.active)
+            {
+                total++;
+            }
+        }
+        return total;
     }
     void SpawnEnemy()
     {
         if (!spawning)
             return;
+        if (getLivingEnemyCount() >= maxEnemyCount)
+        {
+            return;
+        }
         //pick random spawn position and place enemy
         Vector3 spawnPos=Vector3.zero;
         while (enemySpawnPositions.Count != 0)

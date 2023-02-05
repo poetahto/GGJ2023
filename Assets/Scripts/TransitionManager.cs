@@ -6,6 +6,7 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -19,7 +20,8 @@ public class TransitionManager : MonoBehaviour
     public GameObject player;
     public bool combatRoom = false;
     public bool encounterComplete;
-
+    public TextMeshProUGUI FloorDisplay;
+    public int floorCount;
     public EventReference selectionMusic;
     // Start is called before the first frame update
 
@@ -70,10 +72,14 @@ public class TransitionManager : MonoBehaviour
         CombatManager.instance.Cleanup();
         combatRoom = false;
         encounterComplete = true;
-        
+        floorCount = 0;
+        FloorDisplay.text = "Floor " + floorCount.ToString();
         player.gameObject.SetActive(true);
-        
-        yield return sceneSetup();
+
+        SceneManager.LoadScene("PickupRoom");
+        floorCount++;
+        FloorDisplay.text = "Floor " + floorCount.ToString();
+        StartCoroutine(StartNextEncounter());
         yield return fade(Color.white, Color.clear);
     }
 
@@ -96,7 +102,14 @@ public class TransitionManager : MonoBehaviour
     IEnumerator sceneSetup()
     {
         yield return new WaitForSeconds(fadeTime);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        floorCount++;
+        FloorDisplay.text = "Floor " + floorCount.ToString();
+        if(combatRoom)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-  1);
+        }
         StartCoroutine(fade(Color.black,Color.clear));
         StartCoroutine(StartNextEncounter());
     }

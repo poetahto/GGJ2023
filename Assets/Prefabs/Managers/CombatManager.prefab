@@ -276,7 +276,9 @@ MonoBehaviour:
   plantHunterPrefab: {fileID: 4826757982366268270, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
   playerHunterPrefab: {fileID: 5981146511992768556, guid: 91b90a47f0cf4da43b7493833e0b05e9, type: 3}
   enemies: []
-  waveInterval: 1
+  waveInterval: 1.5
+  maxEnemiesPerWave: 2
+  maxEnemyCount: 6
   PlayerHunterRatio: 0.424
   enemySpawnPositions:
   - {fileID: 1448598531414347650}
