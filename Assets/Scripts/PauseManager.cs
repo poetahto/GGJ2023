@@ -8,6 +8,13 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenu;
     bool paused = false;
     // Start is called before the first frame update
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void Init()
+    {
+        instance = null;
+    }
+    
     void Awake()
     {
         if (instance == null)

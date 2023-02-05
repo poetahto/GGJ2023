@@ -15,6 +15,12 @@ public class ChoiceManager : MonoBehaviour
     public List<GameObject> choices;
     public DecisionItemFactory itemFactory;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void Init()
+    {
+        instance = null;
+    }
+    
     // Start is called before the first frame update
     void Awake()
     {

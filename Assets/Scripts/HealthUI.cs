@@ -6,8 +6,16 @@ public class HealthUI : MonoBehaviour
 {
     public static HealthUI instance;
     public Image healthLine;
+    public Image healthFrame;
     public Health playerHealth;
     public float lowestHeight;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void Init()
+    {
+        instance = null;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -23,6 +31,8 @@ public class HealthUI : MonoBehaviour
 
     }
 
+    public float healthAnimSpeed = 15f;
+    private float _targetHealthPercentage = 1;
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +40,10 @@ public class HealthUI : MonoBehaviour
         {
             playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         }
-        float healthPercentage = playerHealth.CurrentHealth / playerHealth.MaxHealth;
-        healthLine.rectTransform.position = new Vector3(healthLine.rectTransform.position.x,257+lowestHeight-lowestHeight*healthPercentage, healthLine.rectTransform.position.z);
+        float t = playerHealth.CurrentHealth / playerHealth.MaxHealth;
+        _targetHealthPercentage = Mathf.Lerp(_targetHealthPercentage, t, healthAnimSpeed * Time.deltaTime);
+        float y = Mathf.Lerp(healthFrame.rectTransform.position.y - healthLine.rectTransform.rect.height, healthFrame.rectTransform.position.y,
+            _targetHealthPercentage);
+        healthLine.rectTransform.position = new Vector3(healthLine.rectTransform.position.x,y, healthLine.rectTransform.position.z);
     }
 }

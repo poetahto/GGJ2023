@@ -5,6 +5,13 @@ using UnityEngine;
 public class PlayerSingleton : MonoBehaviour
 {
     public static PlayerSingleton instance;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void Init()
+    {
+        instance = null;
+    }
+    
     // Start is called before the first frame update
     void Awake()
     {

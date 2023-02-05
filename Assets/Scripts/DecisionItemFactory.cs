@@ -11,14 +11,6 @@ namespace Effects
         public List<Effect> potentialPacts = new List<Effect>();
         public List<Effect> potentialCurses = new List<Effect>();
 
-        private void OnGUI()
-        {
-            if (GUILayout.Button("Create item"))
-            {
-                Create();
-            }
-        }
-
         public GameObject Create()
         {
             Shuffle(potentialCurses);

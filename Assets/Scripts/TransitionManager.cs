@@ -14,6 +14,13 @@ public class TransitionManager : MonoBehaviour
     public bool combatRoom = false;
     public bool encounterComplete;
     // Start is called before the first frame update
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void Init()
+    {
+        instance = null;
+    }
+    
     void Awake()
     {
         if (instance == null)
