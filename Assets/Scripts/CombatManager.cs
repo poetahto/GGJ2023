@@ -95,7 +95,8 @@ public class CombatManager : MonoBehaviour
             Vector3 potentialSpawnPos = t.position;
             checkedSpawnPositions.Add(t);
             enemySpawnPositions.Remove(t);
-            if (Physics2D.CircleCast(spawnPos, spawnCheckRadius,Vector2.down,0,enemyBlockers))
+            RaycastHit hit;
+            if (Physics.SphereCast(spawnPos, spawnCheckRadius,Vector2.down, out hit, 0,enemyBlockers))
             {
                 ;
             }
