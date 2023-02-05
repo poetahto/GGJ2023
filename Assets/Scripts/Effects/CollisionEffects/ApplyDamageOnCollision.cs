@@ -13,5 +13,15 @@ namespace Effects
                 health.Damage(amount);
             }
         }
+
+        public override string GetName()
+        {
+            return string.Empty;
+        }
+
+        public override string GetDescription()
+        {
+            return string.Empty;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Effects;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class BulletSpawner : MonoBehaviour
@@ -9,6 +10,7 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject intialEffects;
     [SerializeField] private Transform spawnLocation;
+    [SerializeField] public UnityEvent onShoot;
 
     public List<Effect> bulletEffects;
     public float bulletSpeed;
@@ -52,6 +54,7 @@ public class BulletSpawner : MonoBehaviour
                 Quaternion randomRotation = Quaternion.Euler(0, randomSpreadAngle, 0);
                 rb.velocity = (randomRotation * FiringDirection) * bulletSpeed;
             }
+            onShoot.Invoke();
         }
         else _cooldownTime -= Time.deltaTime;
     }
