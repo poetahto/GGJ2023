@@ -23,7 +23,12 @@ public class Rune : MonoBehaviour
     [HideInInspector] public float orbitSinAmplitude;
     [HideInInspector] public float orbitSinSpeed;
     [HideInInspector] public float orbitSinOffset;
-    public Transform orbitAround;
+    private Transform orbitAround;
+    private Vector3 velocity;
+    private Vector3 scaleVelocity;
+
+    public float attachSpeed = 1;
+    public float attachSmoothTime = 1;
 
     private void OnValidate()
     {
@@ -54,12 +59,25 @@ public class Rune : MonoBehaviour
     {
         if (orbitAround != null)
         {
-            transform.localPosition = new Vector3(
+            Vector3 targetOrbit = new Vector3(
                 orbitRadius * Mathf.Cos((reverseSpin ? -1 : 1) * Time.time * orbitSpeed + orbitOffset),
                 orbitHeight + Mathf.Sin(Time.time * orbitSinSpeed + orbitSinOffset) *
                 orbitSinAmplitude,
                 orbitRadius * Mathf.Sin((reverseSpin ? -1 : 1) * Time.time * orbitSpeed + orbitOffset));
+
+            transform.localPosition = Vector3.SmoothDamp(
+                transform.localPosition, targetOrbit, ref velocity, attachSmoothTime, attachSpeed);
+
+            rune.transform.localScale = Vector3.SmoothDamp(
+                rune.transform.localScale, Vector3.one, ref scaleVelocity, attachSmoothTime, attachSpeed);
         }
+    }
+
+    [EasyButtons.Button]
+    public void AttachRune(Transform t)
+    {
+        orbitAround = t;
+        transform.parent = t;
     }
 
     public void SetRuneIndex(int index)
