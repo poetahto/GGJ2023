@@ -14,10 +14,9 @@ public class DecisionItemFactory : MonoBehaviour
 
     private void Awake()
     {
-        PotentialPacts = new List<Effect>()
+        PotentialPacts = new List<Effect>
         {
             new HigherBulletDamage(1),
-            new MaxHealthBoost(1),
             new IncreaseBulletSpeed(1),
             new IncreaseFireRate(1),
             new HealOnHit(0.25f),
@@ -27,12 +26,15 @@ public class DecisionItemFactory : MonoBehaviour
             new IncreaseBulletsPerShot(1),
         };
         
-        PotentialCurses = new List<Effect>()
+        PotentialCurses = new List<Effect>
         {
-            new LowFrictionEffect(1),
+            // new LowFrictionEffect(1),
             new StandStillDamage(0.5f, 1),
             new TakeMoreDamage(0.5f),
             new LowerVisibility(0.25f),
+            new LongerRound(15),
+            new MoreEnemies(1),
+            new Slowdown(0.8f),
         };
     }
 
@@ -49,8 +51,7 @@ public class DecisionItemFactory : MonoBehaviour
         var curseList = new List<Effect>
         {
             PotentialCurses[0],
-            PotentialCurses[1],
-            PotentialCurses[2],
+            // PotentialCurses[1],
         };
             
         var trueCurse = curseList[0];

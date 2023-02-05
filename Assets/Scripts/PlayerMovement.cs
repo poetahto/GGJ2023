@@ -55,29 +55,20 @@ public class PlayerMovement : MonoBehaviour
         var dir = inputDirection.normalized;
         var targetVelocity = new Vector3(dir.x, 0, dir.y) * settings.speed;
         
-        bool didReverseX = 
-            targetVelocity.x != 0 && 
-            currentVelocity.x != 0 &&
-            (int) Mathf.Sign(targetVelocity.x) != (int) Mathf.Sign(currentVelocity.x);
-        
-        bool didReverseY = 
-            targetVelocity.z != 0 && 
-            currentVelocity.z != 0 &&
-            (int) Mathf.Sign(targetVelocity.z) != (int) Mathf.Sign(currentVelocity.z);
-        
         float acceleration = inputDirection != Vector3.zero 
             ? settings.acceleration 
             : settings.deceleration;
 
         if (inputDirection != Vector3.zero)
         {
-            var t1 = (int) Mathf.Sign(targetVelocity.x) == (int) Mathf.Sign(currentVelocity.x) && currentVelocity.magnitude > targetVelocity.magnitude;
-            var t2 = (int) Mathf.Sign(targetVelocity.z) == (int) Mathf.Sign(currentVelocity.z) && currentVelocity.magnitude > targetVelocity.magnitude;
-            if (t1 || t2)
-                return;
+            // var t1 = (int) Mathf.Sign(targetVelocity.x) == (int) Mathf.Sign(currentVelocity.x) && currentVelocity.magnitude > targetVelocity.magnitude;
+            // var t2 = (int) Mathf.Sign(targetVelocity.z) == (int) Mathf.Sign(currentVelocity.z) && currentVelocity.magnitude > targetVelocity.magnitude;
+            // if (t1 || t2)
+                // return;
             
             // is accelerating
-            float reverseMultiplier = didReverseX || didReverseY ? settings.reverseMultiplier : 1;
+            // float reverseMultiplier = didReverseX || didReverseY ? settings.reverseMultiplier : 1;
+            float reverseMultiplier = 1;
             float maxDelta = acceleration * reverseMultiplier * Time.deltaTime;
             _rigidbody.velocity = Vector3.MoveTowards(currentVelocity, targetVelocity, maxDelta);
         }

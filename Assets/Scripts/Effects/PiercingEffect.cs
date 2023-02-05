@@ -4,8 +4,8 @@ namespace Effects
 {
     public class PiercingEffect : Effect
     {
-        public override string Name        => "";
-        public override string Description => "";
+        public override string Name        => "Gore";
+        public override string Description => "Your bullets pierce through enemies.";
 
         public override void Initialize()
         {
