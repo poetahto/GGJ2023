@@ -115,7 +115,7 @@ public class TransitionManager : MonoBehaviour
         }
         else
         {
-            _selectionMusic.stop(STOP_MODE.ALLOWFADEOUT);
+            // _selectionMusic.stop(STOP_MODE.ALLOWFADEOUT);
             CombatManager.instance.StartCombatEncounter();
             combatRoom = !combatRoom;
         }

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BulletModifications;
 using Effects;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -56,6 +58,9 @@ public class BulletSpawner : MonoBehaviour
             instance.transform.position = spawnLocation.position;
             _cooldownTime = 1 / fireRate;
 
+            var angle = -Mathf.Atan2(FiringDirection.x, FiringDirection.z) * Mathf.Rad2Deg;
+            instance.transform.rotation = Quaternion.Euler(0, 0, angle);
+
             if (instance.TryGetComponent(out Rigidbody rb))
             {
                 float randomSpreadAngle = Random.Range(-spread, spread);
@@ -65,5 +70,11 @@ public class BulletSpawner : MonoBehaviour
             onShoot.Invoke();
         }
         else _cooldownTime -= Time.deltaTime;
+    }
+
+    private void OnGUI()
+    {
+            var angle = Mathf.Atan2(FiringDirection.x, FiringDirection.z) * Mathf.Rad2Deg;
+        GUILayout.Label(angle.ToString());
     }
 }
