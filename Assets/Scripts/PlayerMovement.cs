@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     [SerializeField] private float decelerationAmount = 5;
-    [SerializeField] private MovementSettings groundedMovement;
+    [SerializeField] public MovementSettings groundedMovement;
 
     private Rigidbody _rigidbody;
     private bool _hasGroundChecker;

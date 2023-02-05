@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2933172759479166959, guid: 6ce259f1a05b76a408ee52ed43ec71a9, type: 3}
+  intialEffects: {fileID: 0}
+  spawnLocation: {fileID: 0}
   bulletEffects:
   - {fileID: 293273501}
   - {fileID: 293273500}
