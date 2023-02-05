@@ -41,6 +41,7 @@ public class ChainGrow : MonoBehaviour
             var bone = bones[i];
             t += Time.deltaTime;
             float scale = animationCurve.Evaluate(t - (timeOffset * i));
+            scale = Mathf.Sqrt(scale);
             bone.localScale = new Vector3(scale, scale, 1);
 
             if (t > animationCurve.keys[animationCurve.length - 1].time + (timeOffset * i))
