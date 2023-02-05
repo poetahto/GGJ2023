@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2869357444138585911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.29, z: 0}
+  m_LocalPosition: {x: 0, y: 0.246, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -397,9 +397,11 @@ MonoBehaviour:
     m_Bits: 384
   baseDamage: 1
   collisionParticles: {fileID: 8861380787337691859, guid: bd2bcfa9d643f9a48a5aa7d5f2ff4352, type: 3}
+  anglesPerBullet: 5
   bulletSpeed: 1
   fireRate: 1
   spread: 1
+  bulletsPerShot: 1
   shaker: {fileID: 0}
 --- !u!114 &5981146511992768547
 MonoBehaviour:
