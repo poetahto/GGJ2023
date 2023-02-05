@@ -103,7 +103,6 @@ public class TransitionManager : MonoBehaviour
     IEnumerator StartNextEncounter()
     {
         yield return new WaitForSeconds(0.01f);
-        print(ChoiceManager.instance);
         loading = false;
         player.transform.position = PlayerSpawnPoint.position;
         if (!combatRoom)

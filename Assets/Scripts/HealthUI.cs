@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     public static HealthUI instance;
-    public Image healthLine;
-    public Image healthFrame;
+    public Slider HealthBar;
     public Health playerHealth;
     public float lowestHeight;
 
@@ -44,8 +43,6 @@ public class HealthUI : MonoBehaviour
         }
         float t = playerHealth.CurrentHealth / playerHealth.MaxHealth;
         _targetHealthPercentage = Mathf.Lerp(_targetHealthPercentage, t, healthAnimSpeed * Time.deltaTime);
-        float y = Mathf.Lerp(healthFrame.rectTransform.position.y - offsetEnd, healthFrame.rectTransform.position.y + offsetStart,
-            _targetHealthPercentage);
-        healthLine.rectTransform.position = new Vector3(healthLine.rectTransform.position.x,y, healthLine.rectTransform.position.z);
+        HealthBar.value = _targetHealthPercentage;
     }
 }
