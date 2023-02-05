@@ -34,7 +34,7 @@ public class Plant : MonoBehaviour
     private float _targetVolume = 0;
 
     public float firstWaitTime = 15;
-    
+    bool grown = false;
     public enum State
     {
         beforePlant,
@@ -73,6 +73,11 @@ public class Plant : MonoBehaviour
 
     private void Update()
     {
+        if (!grown && (currentState == State.wait || currentState == State.moveToTarget))
+        {
+            grown = true;
+            FindObjectOfType<CombatManager>().beginCombat();
+        }
         for (int i = 0; i < currentHeartCount; i++)
         {
             float scale = heartBeat.Evaluate(Time.time + (i * 0.1f));
@@ -173,6 +178,14 @@ public class Plant : MonoBehaviour
         foreach (var chainGrow in chainGrowers)
         {
             chainGrow.growing = true;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            print("start growth");
+            Grow();
         }
     }
 }
