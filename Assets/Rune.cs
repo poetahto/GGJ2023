@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Collectables;
+using DefaultNamespace;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Rune : MonoBehaviour
+public class Rune : MonoBehaviour, IResettable
 {
     public Sprite[] runes;
     public Sprite[] glows;
@@ -95,5 +96,10 @@ public class Rune : MonoBehaviour
         runeIndex = index;
         rune.sprite = runes[runeIndex];
         glow.sprite = glows[runeIndex];
+    }
+
+    public void ResetObject()
+    {
+        Destroy(gameObject);
     }
 }
