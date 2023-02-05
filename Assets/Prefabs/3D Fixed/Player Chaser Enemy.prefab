@@ -729,6 +729,31 @@ MonoBehaviour:
   scaleAmp: {x: 0, y: 0, z: 0}
   speed: 1
   offset: 0
+--- !u!1 &5172707813151916565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: 3784bfad359848f4b9a1b33e26152126, type: 3}
+  m_PrefabInstance: {fileID: 4624890630622962600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6110985753763262842
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172707813151916565}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c5a69e87256c5c47881b1a13d3ff8d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &6057689027735243318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1459119641201781150, guid: 3784bfad359848f4b9a1b33e26152126, type: 3}
