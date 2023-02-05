@@ -66,7 +66,6 @@ public class ChoiceManager : MonoBehaviour
     }
     void ConcludeChoice(ItemCollectEvent data)
     {
-        print("concluding choice");
         foreach(GameObject choice in choices)
         {
             choice.GetComponent<Collectable>().onCollect.RemoveListener(ConcludeChoice);
