@@ -32,12 +32,15 @@ public class Plant : MonoBehaviour
     public ChainGrow[] chainGrowers;
 
     private float _targetVolume = 0;
+
+    public float firstWaitTime = 15;
     
     public enum State
     {
         beforePlant,
         moveToTarget,
         wait,
+        waitStill,
     }
 
     private EventInstance _movementLoop;
@@ -54,8 +57,6 @@ public class Plant : MonoBehaviour
         startPosition = transform.position;
 
         currentHeartCount = heartStems.Length;
-
-        waitTime = 15;
     }
 
     private void OnEnable()
@@ -111,6 +112,19 @@ public class Plant : MonoBehaviour
                 }
 
                 break;
+            case State.waitStill:
+
+                _targetVolume = Mathf.Lerp(_targetVolume, 0, movementLoopVolumeSmoothing * Time.deltaTime);
+                
+                waitTime -= Time.deltaTime;
+
+                if (waitTime <= 0)
+                {
+                    NewTargetLocation();
+                    currentState = State.moveToTarget;
+                }
+
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -154,7 +168,8 @@ public class Plant : MonoBehaviour
     [EasyButtons.Button]
     public void Grow()
     {
-        currentState = State.wait;
+        waitTime = firstWaitTime;
+        currentState = State.waitStill;
         foreach (var chainGrow in chainGrowers)
         {
             chainGrow.growing = true;
