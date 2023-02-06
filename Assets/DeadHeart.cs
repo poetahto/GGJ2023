@@ -8,6 +8,7 @@ public class DeadHeart : MonoBehaviour
     private float t = 0;
     public AnimationCurve curve;
     public bool startDeath;
+    public GameObject heartSprite;
 
     void Update()
     {
@@ -16,6 +17,8 @@ public class DeadHeart : MonoBehaviour
         t += Time.deltaTime;
         transform.localScale = new Vector3(curve.Evaluate(t), curve.Evaluate(t), 1);
         if (t > curve.keys[curve.length - 1].time)
-            Destroy(gameObject);
+        {
+            heartSprite.SetActive(false);
+        }
     }
 }

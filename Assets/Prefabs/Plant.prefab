@@ -694,6 +694,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7320eb926dff2194eb21b6f761588ac2, type: 2}
+    - target: {fileID: -7683511324341501250, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1055,6 +1059,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startDeath: 0
+  heartSprite: {fileID: 6902983611054510315}
 --- !u!1 &973511014501151159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8916593802858992002, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
@@ -1379,9 +1384,15 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startDeath: 0
+  heartSprite: {fileID: 4921389918973880545}
 --- !u!4 &3991872575828745118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4708930380797590443, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
+  m_PrefabInstance: {fileID: 8519827318143279157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4921389918973880545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3634628928208439508, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
   m_PrefabInstance: {fileID: 8519827318143279157}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5562647205822605776 stripped
@@ -1466,9 +1477,19 @@ MonoBehaviour:
     m_RotationOrder: 4
   timeOffset: 3
   growing: 0
+--- !u!1 &6902983611054510315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3022147119397351646, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
+  m_PrefabInstance: {fileID: 8519827318143279157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6995031151258409451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
+  m_PrefabInstance: {fileID: 8519827318143279157}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7161337925424538251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7683511324341501250, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
   m_PrefabInstance: {fileID: 8519827318143279157}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7719063393006677077 stripped
@@ -1526,6 +1547,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startDeath: 0
+  heartSprite: {fileID: 7161337925424538251}
 --- !u!1 &7844774955847829273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1937318099332736812, guid: 5d175b848ba515f47a628644e8c7da1c, type: 3}
