@@ -708,6 +708,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 468857161599608223, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 091b392ffd62fa048a233b9a5e91d1bc, type: 2}
+    - target: {fileID: 468857161599608223, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 468857162023002179, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
       propertyPath: m_Name
       value: PauseManager
@@ -755,6 +763,14 @@ PrefabInstance:
     - target: {fileID: 468857162023002205, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857162381563299, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 091b392ffd62fa048a233b9a5e91d1bc, type: 2}
+    - target: {fileID: 468857162381563299, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
@@ -1144,8 +1160,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Floor 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 091b392ffd62fa048a233b9a5e91d1bc, type: 2}
+  m_sharedMaterial: {fileID: -8330132597740363882, guid: 091b392ffd62fa048a233b9a5e91d1bc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1237,6 +1253,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1664155515, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 091b392ffd62fa048a233b9a5e91d1bc, type: 2}
+    - target: {fileID: 1664155515, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664155515, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8330132597740363882, guid: 091b392ffd62fa048a233b9a5e91d1bc, type: 2}
+    - target: {fileID: 1664155515, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
+      objectReference: {fileID: 0}
     - target: {fileID: 842323177395217977, guid: fe152bfb0eb673e4ab59be2a58c5292d, type: 3}
       propertyPath: m_Name
       value: TransitionManager
