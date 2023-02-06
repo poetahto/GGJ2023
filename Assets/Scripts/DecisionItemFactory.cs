@@ -51,7 +51,7 @@ public class DecisionItemFactory : MonoBehaviour
         var curseList = new List<Effect>
         {
             PotentialCurses[0],
-            // PotentialCurses[1],
+             PotentialCurses[1],
         };
             
         var trueCurse = curseList[0];

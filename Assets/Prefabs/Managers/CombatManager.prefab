@@ -441,7 +441,7 @@ MonoBehaviour:
   plantHunterPrefab: {fileID: 4826757982366268270, guid: 03f3de849f7ec8146a9f3862195fdcca, type: 3}
   playerHunterPrefab: {fileID: 5981146511992768556, guid: 91b90a47f0cf4da43b7493833e0b05e9, type: 3}
   enemies: []
-  waveInterval: 1.5
+  waveInterval: 2
   maxEnemiesPerWave: 2
   maxEnemyCount: 6
   PlayerHunterRatio: 0.424
@@ -467,6 +467,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   timer: {fileID: 2592857190005325741}
+  sporePrefab: {fileID: 487827392257498233, guid: 68c1cde429fd9d24ebbef303b58e19b0, type: 3}
 --- !u!1 &1448598531491292689
 GameObject:
   m_ObjectHideFlags: 0
