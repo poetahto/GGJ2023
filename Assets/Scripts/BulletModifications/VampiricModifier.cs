@@ -15,7 +15,10 @@ namespace BulletModifications
         
         public override void OnHit(Collider col)
         {
-            _target.Heal(_amount);
+            if (col.TryGetComponent(out Health _))
+            {
+                _target.Heal(_amount);
+            }
         }
 
         public override BulletModifier Copy()
