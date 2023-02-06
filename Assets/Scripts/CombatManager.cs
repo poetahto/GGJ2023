@@ -86,6 +86,7 @@ public class CombatManager : MonoBehaviour
         TransitionManager.instance.SetIntensity(0);
         print("ending combat encounter");
         TransitionManager.instance.encounterComplete = true;
+        FindObjectOfType<DoorBehaviour>().OpenDoor();
         StopCoroutine(SpawnEnemies());
         timer.gameObject.SetActive(false);
         killAllEnemies();

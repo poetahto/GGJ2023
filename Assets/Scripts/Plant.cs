@@ -36,6 +36,7 @@ public class Plant : MonoBehaviour
 
     public float firstWaitTime = 15;
     bool grown = false;
+    bool growing = false;
     public enum State
     {
         beforePlant,
@@ -194,8 +195,9 @@ public class Plant : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")&&!growing)
         {
+            growing = true;
             print("start growth");
             Grow();
         }
