@@ -292,6 +292,68 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!1 &5329767749403633602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9151654567399994579}
+  - component: {fileID: 2048796783358511849}
+  m_Layer: 0
+  m_Name: Death SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9151654567399994579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329767749403633602}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 6.628}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6384251712653046827}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2048796783358511849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329767749403633602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1429676507
+      Data2: 1329341443
+      Data3: 2146220417
+      Data4: -580276419
+    Path: event:/Player_Death
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &5638589205412725920
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +462,7 @@ Transform:
   - {fileID: 5780906153642048938}
   - {fileID: 7576941851118828449}
   - {fileID: 847067925}
+  - {fileID: 9151654567399994579}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -467,7 +530,19 @@ MonoBehaviour:
   destroyOnDeath: 0
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2048796783358511849}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -911,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 56490fff0bacea242a5670ab89aa2cc7, type: 2}
     - target: {fileID: -1301417903603393470, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.005337298
+      value: -0.005337283
       objectReference: {fileID: 0}
     - target: {fileID: -1301417903603393470, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -919,7 +994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1301417903603393470, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.15958866
+      value: 0.1595887
       objectReference: {fileID: 0}
     - target: {fileID: -1301417903603393470, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Extent.y
@@ -971,7 +1046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2331189606688730108, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.059081227
+      value: -0.059081256
       objectReference: {fileID: 0}
     - target: {fileID: 2331189606688730108, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -979,7 +1054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2331189606688730108, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.18523458
+      value: 0.18523464
       objectReference: {fileID: 0}
     - target: {fileID: 2331189606688730108, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Extent.y
@@ -1003,7 +1078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3615065373643405576, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.1024984
+      value: 0.10249844
       objectReference: {fileID: 0}
     - target: {fileID: 3615065373643405576, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -1011,7 +1086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3615065373643405576, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.06302474
+      value: 0.06302476
       objectReference: {fileID: 0}
     - target: {fileID: 3615065373643405576, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Extent.y
@@ -1059,7 +1134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5279102891213516099, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.12122934
+      value: 0.121229365
       objectReference: {fileID: 0}
     - target: {fileID: 5279102891213516099, guid: f5b4e06d2c748e0438db966e06130d97, type: 3}
       propertyPath: m_Bounds.m_Center.y
