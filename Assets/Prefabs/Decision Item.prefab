@@ -114,7 +114,7 @@ MonoBehaviour:
   delayTime: 3
   collectable: {fileID: -298651420869414069}
   effectDisplayPrefab: {fileID: 1833833854608047928, guid: de5472d24595cea4ca20049cbf3b632e, type: 3}
-  offset: 0.1
+  offset: 0.2
   baseHeight: 0.7
   pactColor: {r: 0.9960785, g: 0.8588236, b: 0.59607846, a: 1}
   curseColor: {r: 0.87843144, g: 0.28627452, b: 0.227451, a: 1}

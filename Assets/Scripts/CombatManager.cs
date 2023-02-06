@@ -75,7 +75,6 @@ public class CombatManager : MonoBehaviour
         timer.value = 0;
         timer.gameObject.SetActive(true);
         spawning = true;
-        TransitionManager.instance.SetIntensity(1);
         StartCoroutine(SpawnEnemies());
         for (float t = 0f; t < duration; t += Time.deltaTime)
         {

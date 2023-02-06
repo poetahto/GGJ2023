@@ -249,6 +249,13 @@ MonoBehaviour:
     muffle under the current of blood emanating from your skull.  '
   - Your power only made you a greater target for the vermin, they will grow stronger
     upon your remains.
+  doorSfx:
+    Guid:
+      Data1: 955524429
+      Data2: 1245320569
+      Data3: -2085110637
+      Data4: -908960037
+    Path: event:/Stone Open
 --- !u!1 &842323177409944797
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,19 +474,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2385787433101505849, guid: a74e5f6346ebcc34d9a669951455226f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.659
+      value: -4.469
       objectReference: {fileID: 0}
     - target: {fileID: 2385787433101505849, guid: a74e5f6346ebcc34d9a669951455226f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.290001
+      value: 11.290001
       objectReference: {fileID: 0}
     - target: {fileID: 2385787433101505849, guid: a74e5f6346ebcc34d9a669951455226f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.676092
+      value: -17.176092
       objectReference: {fileID: 0}
     - target: {fileID: 2385787433101505850, guid: a74e5f6346ebcc34d9a669951455226f, type: 3}
       propertyPath: orthographic size
-      value: 2
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 2385787433381809495, guid: a74e5f6346ebcc34d9a669951455226f, type: 3}
       propertyPath: m_LocalPosition.x
