@@ -1544,6 +1544,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickupEnv
       objectReference: {fileID: 0}
+    - target: {fileID: 7697044199105036916, guid: 9ebe85d3d9351a848a8634151a93b344, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697044199105036916, guid: 9ebe85d3d9351a848a8634151a93b344, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.68
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ebe85d3d9351a848a8634151a93b344, type: 3}
 --- !u!1 &1969805621

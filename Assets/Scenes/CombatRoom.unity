@@ -277,6 +277,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CombatEnv
       objectReference: {fileID: 0}
+    - target: {fileID: 7697044199105036916, guid: 7c6477bbc6290d54c8a0575bb832134f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697044199105036916, guid: 7c6477bbc6290d54c8a0575bb832134f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -22.09
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6477bbc6290d54c8a0575bb832134f, type: 3}
 --- !u!1 &135978970
