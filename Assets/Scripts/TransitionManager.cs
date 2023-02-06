@@ -124,10 +124,14 @@ public class TransitionManager : MonoBehaviour
         yield return new WaitForSeconds(fadeTime);
         floorCount++;
         FloorDisplay.text = "Floor " + floorCount.ToString();
-        if(combatRoom)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        if (combatRoom)
+        {
+            SetIntensity(1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        }
         else
         {
+            SetIntensity(0);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-  1);
             ChangeQuoteText();
             StartCoroutine(CycleQuote(Color.clear, Color.white));
