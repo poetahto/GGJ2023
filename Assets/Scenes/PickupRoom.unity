@@ -656,6 +656,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 468857161204919100, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161204919100, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161204919100, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161204919100, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -265.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161204919100, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161329110213, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161329110213, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161329110213, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161329110216, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161599608220, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161599608220, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161599608220, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 468857161599608220, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 468857162023002179, guid: 307a76c000f101e42a83365c6b07c17d, type: 3}
       propertyPath: m_Name
       value: PauseManager
@@ -1287,6 +1339,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1448598531427209542, guid: b005849f0ba276e4f9894837943b3b77, type: 3}
+      propertyPath: sporePrefab
+      value: 
+      objectReference: {fileID: 487827392257498233, guid: 68c1cde429fd9d24ebbef303b58e19b0, type: 3}
     - target: {fileID: 1448598531427209543, guid: b005849f0ba276e4f9894837943b3b77, type: 3}
       propertyPath: m_Name
       value: CombatManager

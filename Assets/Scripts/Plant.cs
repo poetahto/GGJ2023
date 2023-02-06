@@ -162,7 +162,14 @@ public class Plant : MonoBehaviour
     [EasyButtons.Button]
     public void DropHeart(HealthDamageEvent data)
     {
-        if (currentHeartCount <= 0) return;
+        if (currentHeartCount <= 0)
+        {
+            var mvnt = FindObjectOfType<PlayerMovement>();
+            if (mvnt != null && mvnt.TryGetComponent(out Health health))
+            {
+                health.Damage(100000);
+            }
+        }
         currentHeartCount--;
         Transform heart = heartStems[currentHeartCount];
         heart.parent = null;

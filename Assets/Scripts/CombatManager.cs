@@ -23,7 +23,7 @@ public class CombatManager : MonoBehaviour
     public float spawnCheckRadius;
     public LayerMask enemyBlockers;
     public Slider timer;
-
+    public GameObject sporePrefab;
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void Init()
     {
@@ -82,7 +82,6 @@ public class CombatManager : MonoBehaviour
             float normalizedTime = t / duration;
             //right here, you can now use normalizedTime as the third parameter in any Lerp from start to end
             timer.value = normalizedTime;
-            TransitionManager.instance.SetIntensity(normalizedTime);
             yield return null;
         }
         TransitionManager.instance.SetIntensity(0);
@@ -92,6 +91,7 @@ public class CombatManager : MonoBehaviour
         timer.gameObject.SetActive(false);
         killAllEnemies();
         spawning = false;
+        Instantiate(sporePrefab, plantInstance.transform.position, Quaternion.identity);
         Destroy(plantInstance);
     }
     IEnumerator SpawnEnemies()

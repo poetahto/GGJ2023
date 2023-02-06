@@ -551,9 +551,11 @@ MonoBehaviour:
     m_Bits: 320
   baseDamage: 1
   collisionParticles: {fileID: 8861380787337691859, guid: bd2bcfa9d643f9a48a5aa7d5f2ff4352, type: 3}
+  anglesPerBullet: 5
   bulletSpeed: 2
   fireRate: 1.5
   spread: 0
+  bulletsPerShot: 1
   shaker: {fileID: 0}
 --- !u!114 &2020661123973391977
 MonoBehaviour:
@@ -743,7 +745,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6384251714258493514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
