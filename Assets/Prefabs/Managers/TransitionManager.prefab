@@ -251,6 +251,13 @@ MonoBehaviour:
     muffle under the current of blood emanating from your skull.  '
   - Your power only made you a greater target for the vermin, they will grow stronger
     upon your remains.
+  doorSfx:
+    Guid:
+      Data1: 955524429
+      Data2: 1245320569
+      Data3: -2085110637
+      Data4: -908960037
+    Path: event:/Stone Open
 --- !u!65 &5860212905950130606
 BoxCollider:
   m_ObjectHideFlags: 0

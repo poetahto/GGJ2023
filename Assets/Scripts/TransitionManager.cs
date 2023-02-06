@@ -27,6 +27,8 @@ public class TransitionManager : MonoBehaviour
     public List<string> highQuotes;
     public List<string> lowDeathQuotes;
     public List<string> highDeathQuotes;
+
+    public EventReference doorSfx;
     // Start is called before the first frame update
 
     private EventInstance _selectionMusic;
@@ -116,7 +118,7 @@ public class TransitionManager : MonoBehaviour
         loading = true;
         
         StartCoroutine(fade(Color.clear,Color.black));
-        
+        RuntimeManager.PlayOneShot(doorSfx);
         StartCoroutine(sceneSetup());
     }
     IEnumerator sceneSetup()
