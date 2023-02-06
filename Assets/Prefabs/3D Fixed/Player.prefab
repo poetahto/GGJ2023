@@ -426,7 +426,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6384251712653046827}
   - component: {fileID: 6384251712653046826}
-  - component: {fileID: 6384251712653046825}
   - component: {fileID: 6384251712653046820}
   - component: {fileID: 6384251712653046821}
   - component: {fileID: 6384251712653046822}
@@ -437,6 +436,7 @@ GameObject:
   - component: {fileID: 1645052078}
   - component: {fileID: 1645052079}
   - component: {fileID: 1645052075}
+  - component: {fileID: 5204432184600957201}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -482,19 +482,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 1
---- !u!65 &6384251712653046825
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384251712653046824}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25, z: 0.25}
-  m_Center: {x: 0, y: 0.125, z: 0}
 --- !u!114 &6384251712653046820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,6 +693,20 @@ MonoBehaviour:
       Data4: -436658754
     Path: event:/Player Footsteps
   stepDistance: 0.5
+--- !u!136 &5204432184600957201
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384251712653046824}
+  m_Material: {fileID: 13400000, guid: d58690d8f8c77224fb016bba23a30f4a, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.14
+  m_Height: 0.6
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.37, z: 0}
 --- !u!1 &6384251713270343230
 GameObject:
   m_ObjectHideFlags: 0
