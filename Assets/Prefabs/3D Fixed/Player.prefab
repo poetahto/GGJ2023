@@ -444,11 +444,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a52aba90c2645deadd4277eb1bea948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decelerationAmount: 5
+  decelerationAmount: 10
   groundedMovement:
     speed: 2
-    acceleration: 5
-    deceleration: 5
+    acceleration: 10
+    deceleration: 1
     reverseMultiplier: 1
 --- !u!114 &6384251712653046821
 MonoBehaviour:
@@ -551,9 +551,11 @@ MonoBehaviour:
     m_Bits: 320
   baseDamage: 1
   collisionParticles: {fileID: 8861380787337691859, guid: bd2bcfa9d643f9a48a5aa7d5f2ff4352, type: 3}
+  anglesPerBullet: 5
   bulletSpeed: 2
   fireRate: 1.5
   spread: 0
+  bulletsPerShot: 1
   shaker: {fileID: 0}
 --- !u!114 &2020661123973391977
 MonoBehaviour:
