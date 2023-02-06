@@ -444,11 +444,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a52aba90c2645deadd4277eb1bea948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decelerationAmount: 5
+  decelerationAmount: 10
   groundedMovement:
     speed: 2
-    acceleration: 5
-    deceleration: 5
+    acceleration: 10
+    deceleration: 1
     reverseMultiplier: 1
 --- !u!114 &6384251712653046821
 MonoBehaviour:
