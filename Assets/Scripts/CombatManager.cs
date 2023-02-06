@@ -23,7 +23,7 @@ public class CombatManager : MonoBehaviour
     public float spawnCheckRadius;
     public LayerMask enemyBlockers;
     public Slider timer;
-
+    public GameObject sporePrefab;
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void Init()
     {
@@ -75,6 +75,7 @@ public class CombatManager : MonoBehaviour
         timer.value = 0;
         timer.gameObject.SetActive(true);
         spawning = true;
+        TransitionManager.instance.SetIntensity(1);
         StartCoroutine(SpawnEnemies());
         for (float t = 0f; t < duration; t += Time.deltaTime)
         {
@@ -83,12 +84,14 @@ public class CombatManager : MonoBehaviour
             timer.value = normalizedTime;
             yield return null;
         }
+        TransitionManager.instance.SetIntensity(0);
         print("ending combat encounter");
         TransitionManager.instance.encounterComplete = true;
         StopCoroutine(SpawnEnemies());
         timer.gameObject.SetActive(false);
         killAllEnemies();
         spawning = false;
+        Instantiate(sporePrefab, plantInstance.transform.position, Quaternion.identity);
         Destroy(plantInstance);
     }
     IEnumerator SpawnEnemies()
@@ -167,6 +170,7 @@ public class CombatManager : MonoBehaviour
         if(plantInstance)
         plantInstance.SetActive(false);
         
+        TransitionManager.instance.SetIntensity(0);
         timer.gameObject.SetActive(false);
     }
 }

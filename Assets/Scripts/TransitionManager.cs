@@ -36,6 +36,11 @@ public class TransitionManager : MonoBehaviour
     {
         instance = null;
     }
+
+    public void SetIntensity(float value)
+    {
+        _selectionMusic.setParameterByName("Battle_Intensity", value);
+    }
     
     void Awake()
     {
@@ -50,6 +55,7 @@ public class TransitionManager : MonoBehaviour
             StartCoroutine(StartNextEncounter());
             DontDestroyOnLoad(gameObject);
             _selectionMusic = RuntimeManager.CreateInstance(selectionMusic);
+            _selectionMusic.start();
         }
         else
         {
@@ -65,7 +71,7 @@ public class TransitionManager : MonoBehaviour
 
     private IEnumerator PlayerDeathRestartCoroutine()
     {
-        foreach (var resettable in player.GetComponents<IResettable>())
+        foreach (var resettable in player.GetComponentsInChildren<IResettable>())
         {
             resettable.ResetObject();
         }
@@ -77,6 +83,10 @@ public class TransitionManager : MonoBehaviour
         combatRoom = false;
         encounterComplete = true;
         floorCount = 0;
+        foreach (Rune rune in FindObjectsOfType<Rune>())
+        {
+            Destroy(rune.gameObject);
+        }
         FloorDisplay.text = "Floor " + floorCount.ToString();
         player.gameObject.SetActive(true);
         ChangeDeathQuoteText();
@@ -171,7 +181,6 @@ public class TransitionManager : MonoBehaviour
             CombatManager.instance.Cleanup();
             ChoiceManager.instance.SpawnNewPickups();
             combatRoom = !combatRoom;
-            _selectionMusic.start();
         }
         else
         {
