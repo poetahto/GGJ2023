@@ -75,5 +75,6 @@ public class ChoiceManager : MonoBehaviour
         }
         choices.Clear();
         TransitionManager.instance.encounterComplete = true;
+        FindObjectOfType<DoorBehaviour>().OpenDoor();
     }
 }

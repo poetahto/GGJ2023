@@ -103,13 +103,10 @@ public class TransitionManager : MonoBehaviour
         yield return fade(Color.white, Color.clear);
     }
 
-    public void OnTriggerEnter(Collider col)
+    public void DoorEntered()
     {
-        if (col.CompareTag("Player"))
-        {
-            if ((!loading) && encounterComplete)
-                TransitionToNextLevel();
-        }
+        if ((!loading) && encounterComplete)
+            TransitionToNextLevel();
     }
     void TransitionToNextLevel()
     {
